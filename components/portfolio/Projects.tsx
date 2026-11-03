@@ -24,14 +24,6 @@ export default function Projects() {
     return project.category === selectedFilter;
   });
 
-  const isDefaultView = selectedFilter === "all" || selectedFilter === "featured";
-  const primaryFeaturedProject = isDefaultView
-    ? filteredProjects.find((p) => p.id === "weather-pro") || filteredProjects[0]
-    : null;
-  const secondaryProjects = isDefaultView
-    ? filteredProjects.filter((p) => p.id !== primaryFeaturedProject?.id)
-    : filteredProjects;
-
   return (
     <section id="projects" className="py-16 md:py-24 relative overflow-hidden w-full" aria-labelledby="projects-heading">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
@@ -80,32 +72,18 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Projects Showcase Container */}
+        {/* Projects 3-in-a-Row Container */}
         {filteredProjects.length > 0 ? (
-          <div className="w-full">
-            {/* Primary Dominant Showcase if in default view */}
-            {isDefaultView && primaryFeaturedProject && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 w-full items-stretch">
+            {filteredProjects.map((project, index) => (
               <ProjectCard
-                key={primaryFeaturedProject.id}
-                project={primaryFeaturedProject}
-                index={0}
-                variant="featured"
+                key={project.id}
+                project={project}
+                index={index}
+                variant="standard"
                 onOpenModal={(p) => setActiveModalProject(p)}
               />
-            )}
-
-            {/* Complementary Grid for remaining or filtered projects */}
-            <div className={`grid gap-8 w-full ${isDefaultView ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3"}`}>
-              {secondaryProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={isDefaultView ? index + 1 : index}
-                  variant="standard"
-                  onOpenModal={(p) => setActiveModalProject(p)}
-                />
-              ))}
-            </div>
+            ))}
           </div>
         ) : (
           <div className="p-12 text-center rounded-2xl bg-white border border-surface-border shadow-soft-sm w-full">

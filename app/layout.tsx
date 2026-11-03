@@ -10,33 +10,34 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kavi-22.github.io"),
+  metadataBase: new URL(PROFILE.social.website || "https://portfolio-hazel-gamma-94.vercel.app"),
   title: {
     default: `${PROFILE.name} | ${PROFILE.role}`,
     template: `%s | ${PROFILE.name}`,
   },
-  description: `${PROFILE.name} is a ${PROFILE.role} and B.Sc. Computer Science graduate (First Class) from Annamalai University specializing in Next.js, React, TypeScript, and modern web engineering.`,
+  description: `${PROFILE.name} is an ${PROFILE.role} at Arizon Digital specializing in React, Next.js, TypeScript, and modern headless e-commerce architectures.`,
   keywords: [
-    "Kavi",
-    "Full Stack Developer",
-    "Frontend Developer",
+    "Kaviyarasu C",
+    "Associate Software Engineer",
+    "Full Stack Software Engineer",
+    "Frontend Engineer",
     "React Developer",
     "Next.js Developer",
+    "Headless Commerce",
+    "BigCommerce Catalyst",
+    "Makeswift CMS",
     "TypeScript",
     "Tailwind CSS",
-    "Web Developer Portfolio",
-    "Annamalai University Computer Science",
-    "Computer Science Graduate",
   ],
-  authors: [{ name: PROFILE.name, url: "https://github.com/kavi-22" }],
+  authors: [{ name: PROFILE.name, url: PROFILE.social.github }],
   creator: PROFILE.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://portfolio-hazel-gamma-94.vercel.app/",
+    url: PROFILE.social.website || "https://portfolio-hazel-gamma-94.vercel.app/",
     title: `${PROFILE.name} | ${PROFILE.role}`,
     description: PROFILE.bio,
-    siteName: `${PROFILE.name} Developer Portfolio`,
+    siteName: `${PROFILE.name} Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
@@ -66,11 +67,12 @@ export default function RootLayout({
     "@type": "Person",
     name: PROFILE.name,
     jobTitle: PROFILE.role,
-    url: "https://kavi-22.github.io",
-    sameAs: [
-      PROFILE.social.github,
-      PROFILE.social.linkedin,
-    ].filter(Boolean),
+    worksFor: {
+      "@type": "Organization",
+      name: "Arizon Digital",
+    },
+    url: PROFILE.social.website || "https://portfolio-hazel-gamma-94.vercel.app",
+    sameAs: [PROFILE.social.github, PROFILE.social.linkedin].filter(Boolean),
     knowsAbout: PROFILE.currentlyWorkingWith,
   };
 

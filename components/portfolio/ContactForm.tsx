@@ -27,12 +27,12 @@ export default function ContactForm() {
     const errors: Record<string, string> = {};
 
     if (!formData.name.trim() || formData.name.trim().length < 2) {
-      errors.name = "Please enter your name (min 2 characters).";
+      errors.name = "Please enter your name (minimum 2 characters).";
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
-      errors.email = "Please enter a valid email address.";
+      errors.email = "Please provide a valid email address.";
     }
 
     if (!formData.message.trim() || formData.message.trim().length < 10) {
@@ -46,7 +46,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (loading) return; // Prevent duplicate submission
+    if (loading) return;
     if (!validateForm()) return;
 
     setLoading(true);
@@ -79,7 +79,7 @@ export default function ContactForm() {
       } else {
         setStatus({
           type: "error",
-          message: data.message || "Failed to submit message. Please try again.",
+          message: data.message || "Failed to submit message. Please try again or email directly.",
         });
         if (data.errors) {
           setFieldErrors(data.errors);
@@ -99,8 +99,9 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur-md space-y-5 shadow-card-subtle"
+      className="p-6 sm:p-8 rounded-2xl bg-gradient-card border border-white/[0.08] shadow-card-subtle backdrop-blur-md space-y-4"
       noValidate
+      aria-label="Contact inquiry form"
     >
       {/* Honeypot Spam Protection Field - Hidden from humans */}
       <div className="hidden" aria-hidden="true">
@@ -117,8 +118,8 @@ export default function ContactForm() {
 
       {/* Name Field */}
       <div>
-        <label htmlFor="contact-name" className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
-          Your Name <span className="text-cyan-400">*</span>
+        <label htmlFor="contact-name" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
+          Your Name <span className="text-emerald-400">*</span>
         </label>
         <input
           type="text"
@@ -131,14 +132,14 @@ export default function ContactForm() {
             if (fieldErrors.name) setFieldErrors({ ...fieldErrors, name: "" });
           }}
           placeholder="e.g. Alex Johnson"
-          className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors ${
+          className={`w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors ${
             fieldErrors.name
-              ? "border-rose-500/80 focus:border-rose-500"
-              : "border-slate-800 focus:border-cyan-500/80 focus:ring-1 focus:ring-cyan-500/30"
+              ? "border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
+              : "border-white/[0.08] focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30"
           }`}
         />
         {fieldErrors.name && (
-          <p className="text-xs text-rose-400 mt-1.5 flex items-center gap-1">
+          <p className="text-xs text-rose-400 mt-1 flex items-center gap-1" role="alert">
             <AlertCircle size={12} />
             <span>{fieldErrors.name}</span>
           </p>
@@ -147,8 +148,8 @@ export default function ContactForm() {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="contact-email" className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
-          Your Email Address <span className="text-cyan-400">*</span>
+        <label htmlFor="contact-email" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
+          Your Email Address <span className="text-emerald-400">*</span>
         </label>
         <input
           type="email"
@@ -161,14 +162,14 @@ export default function ContactForm() {
             if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: "" });
           }}
           placeholder="alex@example.com"
-          className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors ${
+          className={`w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors ${
             fieldErrors.email
-              ? "border-rose-500/80 focus:border-rose-500"
-              : "border-slate-800 focus:border-cyan-500/80 focus:ring-1 focus:ring-cyan-500/30"
+              ? "border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
+              : "border-white/[0.08] focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30"
           }`}
         />
         {fieldErrors.email && (
-          <p className="text-xs text-rose-400 mt-1.5 flex items-center gap-1">
+          <p className="text-xs text-rose-400 mt-1 flex items-center gap-1" role="alert">
             <AlertCircle size={12} />
             <span>{fieldErrors.email}</span>
           </p>
@@ -177,8 +178,8 @@ export default function ContactForm() {
 
       {/* Subject Field */}
       <div>
-        <label htmlFor="contact-subject" className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
-          Subject <span className="text-slate-500 text-[11px] lowercase">(optional)</span>
+        <label htmlFor="contact-subject" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
+          Subject <span className="text-slate-500 text-[10px] font-sans lowercase">(optional)</span>
         </label>
         <input
           type="text"
@@ -186,35 +187,35 @@ export default function ContactForm() {
           disabled={loading}
           value={formData.subject}
           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-          placeholder="Project Inquiry / Job Opportunity"
-          className="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/80 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
+          placeholder="Opportunity / Technical Collaboration"
+          className="w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border border-white/[0.08] text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-colors"
         />
       </div>
 
       {/* Message Field */}
       <div>
-        <label htmlFor="contact-message" className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
-          Message <span className="text-cyan-400">*</span>
+        <label htmlFor="contact-message" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
+          Message <span className="text-emerald-400">*</span>
         </label>
         <textarea
           id="contact-message"
           required
-          rows={5}
+          rows={4}
           disabled={loading}
           value={formData.message}
           onChange={(e) => {
             setFormData({ ...formData, message: e.target.value });
             if (fieldErrors.message) setFieldErrors({ ...fieldErrors, message: "" });
           }}
-          placeholder="Hi Kavi, I'd like to discuss an opportunity or project..."
-          className={`w-full px-4 py-3 rounded-xl bg-slate-950/80 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors resize-none ${
+          placeholder="Hi Kaviyarasu, I would like to discuss an opportunity or project..."
+          className={`w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors resize-none ${
             fieldErrors.message
-              ? "border-rose-500/80 focus:border-rose-500"
-              : "border-slate-800 focus:border-cyan-500/80 focus:ring-1 focus:ring-cyan-500/30"
+              ? "border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
+              : "border-white/[0.08] focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30"
           }`}
         />
         {fieldErrors.message && (
-          <p className="text-xs text-rose-400 mt-1.5 flex items-center gap-1">
+          <p className="text-xs text-rose-400 mt-1 flex items-center gap-1" role="alert">
             <AlertCircle size={12} />
             <span>{fieldErrors.message}</span>
           </p>
@@ -223,14 +224,14 @@ export default function ContactForm() {
 
       {/* Status Feedback Banner */}
       {status.type === "success" && (
-        <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs flex items-start gap-2.5 animate-fade-in" role="status">
+        <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs flex items-start gap-2 animate-fade-in" role="status">
           <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-400" />
           <span>{status.message}</span>
         </div>
       )}
 
       {status.type === "error" && (
-        <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-300 text-xs flex items-start gap-2.5 animate-fade-in" role="alert">
+        <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-300 text-xs flex items-start gap-2 animate-fade-in" role="alert">
           <AlertCircle size={16} className="mt-0.5 shrink-0 text-rose-400" />
           <span>{status.message}</span>
         </div>
@@ -240,17 +241,17 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-semibold text-sm transition-all shadow-glow-cyan disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+        className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition-all shadow-emerald-glow disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
       >
         {loading ? (
           <>
-            <Loader2 size={16} className="animate-spin" />
-            <span>Sending Message...</span>
+            <Loader2 size={15} className="animate-spin" />
+            <span>Dispatching Message...</span>
           </>
         ) : (
           <>
-            <Send size={16} />
-            <span>Send Inquiry</span>
+            <Send size={15} />
+            <span>Send Direct Message</span>
           </>
         )}
       </button>

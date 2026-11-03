@@ -16,6 +16,8 @@ export interface ProfileStats {
 export interface Profile {
   name: string;
   role: string;
+  headline?: string;
+  introHeadline?: string;
   secondaryRole?: string;
   location: string;
   email: string;
@@ -29,22 +31,17 @@ export interface Profile {
   resumeUrl: string | null;
   stats?: ProfileStats;
   avatarUrl?: string;
-  codeSnippet?: {
-    filename: string;
-    language: string;
-    code: string;
-  };
 }
 
 export interface SkillItem {
   name: string;
-  category: "frontend" | "backend" | "database" | "tools" | "languages" | "core";
+  category?: string;
   description?: string;
-  icon?: string;
   highlight?: boolean;
 }
 
 export interface SkillCategory {
+  id: string;
   title: string;
   description: string;
   skills: SkillItem[];
@@ -124,7 +121,7 @@ export interface ContactPayload {
   email: string;
   subject?: string;
   message: string;
-  honeypot?: string; // spam protection
+  honeypot?: string;
 }
 
 export interface ContactApiResponse {

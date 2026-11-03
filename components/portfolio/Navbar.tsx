@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Menu, X, FileText, Sparkles, ArrowUpRight } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Menu, X, FileText, ArrowUpRight, Send } from "lucide-react";
 import { PROFILE } from "@/data/profile";
 import { NAV_LINKS } from "@/data/social";
 
@@ -9,14 +9,15 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 24);
 
-      // Section spy
-      const sections = NAV_LINKS.map(link => link.href.replace("#", ""));
-      const scrollPosition = window.scrollY + 100;
+      const sections = NAV_LINKS.map((link) => link.href.replace("#", ""));
+      const scrollPosition = window.scrollY + 140;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const sectionEl = document.getElementById(sections[i]);
@@ -24,9 +25,12 @@ export default function Navbar() {
           const top = sectionEl.offsetTop;
           if (scrollPosition >= top) {
             setActiveSection(sections[i]);
-            break;
+            return;
           }
         }
+      }
+      if (window.scrollY < 200) {
+        setActiveSection("");
       }
     };
 
@@ -35,16 +39,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Lock scroll on mobile menu open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setMobileMenuOpen(false);
+          menuButtonRef.current?.focus();
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+        document.body.style.overflow = "unset";
+      };
     } else {
       document.body.style.overflow = "unset";
     }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
   }, [mobileMenuOpen]);
 
   const handleNavClick = (href: string) => {
@@ -60,35 +72,38 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#090d16]/85 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/20 py-3"
-          : "bg-transparent py-5"
+          ? "bg-[#070a11]/85 backdrop-blur-xl border-b border-white/[0.07] py-3.5 shadow-xl shadow-black/40"
+          : "bg-transparent py-5 sm:py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand / Logo */}
+        {/* Brand Monogram & Name */}
         <a
           href="#"
-          className="group flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg p-1"
-          aria-label={`${PROFILE.name} - Home`}
+          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-lg p-1"
+          aria-label={`${PROFILE.name} - Back to top`}
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-500 p-[1.5px] shadow-sm group-hover:shadow-glow-cyan transition-all duration-300">
-            <div className="w-full h-full bg-[#090d16] rounded-[10px] flex items-center justify-center font-mono font-bold text-white text-sm">
+          <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-obsidian-800 border border-white/[0.1] group-hover:border-emerald-500/50 transition-colors duration-300 shadow-sm">
+            <span className="font-mono text-xs font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
               {PROFILE.name.charAt(0)}
-            </div>
+            </span>
+            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-[#070a11]" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors text-base">
+            <span className="text-sm font-semibold tracking-tight text-white group-hover:text-emerald-300 transition-colors">
               {PROFILE.name}
-              <span className="text-cyan-400">.</span>
             </span>
-            <span className="text-[10px] font-mono text-slate-400 -mt-1 hidden sm:inline-block">
-              {PROFILE.role}
+            <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400 -mt-0.5 hidden xs:inline-block">
+              Full Stack Engineer
             </span>
           </div>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 backdrop-blur-md" aria-label="Main Navigation">
+        {/* Center Desktop Navigation Pill */}
+        <nav
+          className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full bg-obsidian-850/90 border border-white/[0.08] backdrop-blur-lg shadow-sm"
+          aria-label="Main Navigation"
+        >
           {NAV_LINKS.map((link) => {
             const sectionId = link.href.replace("#", "");
             const isActive = activeSection === sectionId;
@@ -100,10 +115,10 @@ export default function Navbar() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
+                className={`relative px-3.5 py-1 rounded-full text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
                   isActive
-                    ? "bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm"
-                    : "text-slate-300 hover:text-white hover:bg-slate-800/60"
+                    ? "text-emerald-300 bg-emerald-950/60 border border-emerald-500/30 shadow-sm"
+                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
                 }`}
               >
                 {link.label}
@@ -112,29 +127,19 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Action Area */}
+        {/* Right Desktop Actions */}
         <div className="hidden md:flex items-center gap-3">
-          {PROFILE.availability && (
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-[11px] font-medium text-emerald-300">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>{PROFILE.availability}</span>
-            </div>
-          )}
-
           {PROFILE.resumeUrl && (
             <a
               href={PROFILE.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-medium text-slate-200 hover:text-white transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-              aria-label="Download or view resume"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-obsidian-800 hover:bg-obsidian-700 border border-white/[0.08] hover:border-white/[0.16] text-xs font-medium text-slate-300 hover:text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              aria-label="View Resume (opens in new tab)"
             >
-              <FileText size={13} className="text-cyan-400" />
+              <FileText size={12} className="text-emerald-400" />
               <span>Resume</span>
-              <ArrowUpRight size={12} className="text-slate-400" />
+              <ArrowUpRight size={11} className="text-slate-500" />
             </a>
           )}
 
@@ -144,42 +149,56 @@ export default function Navbar() {
               e.preventDefault();
               handleNavClick("#contact");
             }}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-semibold text-xs transition-all shadow-sm hover:shadow-glow-cyan focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs transition-all shadow-emerald-glow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
           >
-            <span>Let&apos;s Talk</span>
+            <span>Let&apos;s Connect</span>
+            <Send size={11} />
           </a>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Header Controls */}
         <div className="flex md:hidden items-center gap-2">
-          {PROFILE.availability && (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-[10px] font-medium text-emerald-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="truncate max-w-[100px]">Available</span>
-            </div>
+          {PROFILE.resumeUrl && (
+            <a
+              href={PROFILE.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-obsidian-800 border border-white/[0.08] text-[11px] font-medium text-slate-300"
+              aria-label="View Resume"
+            >
+              <FileText size={12} className="text-emerald-400" />
+              <span>Resume</span>
+            </a>
           )}
 
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open navigation menu"}
+            className="p-2 rounded-lg bg-obsidian-850 border border-white/[0.1] text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-menu"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Accessible Mobile Drawer */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 top-[60px] z-40 bg-[#090d16]/95 backdrop-blur-xl border-t border-slate-800/80 p-6 flex flex-col justify-between md:hidden animate-fade-in"
+          id="mobile-nav-menu"
+          ref={mobileMenuRef}
+          className="fixed inset-0 top-[60px] z-40 bg-[#070a11]/98 backdrop-blur-2xl border-t border-white/[0.08] p-6 flex flex-col justify-between md:hidden overflow-y-auto"
           role="dialog"
           aria-modal="true"
-          aria-label="Mobile Navigation"
+          aria-label="Mobile Navigation Menu"
         >
-          <div className="space-y-2 py-4">
+          <div className="space-y-1.5 py-2">
+            <div className="text-[10px] font-mono tracking-widest uppercase text-slate-500 px-3 pb-2">
+              Navigation
+            </div>
             {NAV_LINKS.map((link) => {
               const sectionId = link.href.replace("#", "");
               const isActive = activeSection === sectionId;
@@ -191,10 +210,10 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-all ${
+                  className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                     isActive
-                      ? "bg-slate-800/80 text-cyan-300 border border-cyan-500/30"
-                      : "text-slate-300 hover:bg-slate-900/60 hover:text-white"
+                      ? "bg-emerald-950/40 text-emerald-300 border border-emerald-500/30"
+                      : "text-slate-300 hover:bg-white/[0.03] hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -203,17 +222,17 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="pt-6 border-t border-slate-800/80 space-y-3 pb-8">
+          <div className="pt-6 border-t border-white/[0.08] space-y-3 pb-6">
             {PROFILE.resumeUrl && (
               <a
                 href={PROFILE.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 font-medium text-sm"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-obsidian-800 border border-white/[0.08] text-slate-200 font-medium text-sm"
               >
-                <FileText size={16} className="text-cyan-400" />
-                <span>View Resume</span>
-                <ArrowUpRight size={14} className="text-slate-400" />
+                <FileText size={15} className="text-emerald-400" />
+                <span>Download Curriculum Vitae</span>
+                <ArrowUpRight size={13} className="text-slate-500" />
               </a>
             )}
             <a
@@ -222,10 +241,10 @@ export default function Navbar() {
                 e.preventDefault();
                 handleNavClick("#contact");
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-950 font-semibold text-sm shadow-glow-cyan"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition-colors shadow-emerald-glow"
             >
-              <Sparkles size={16} />
-              <span>Get In Touch</span>
+              <Send size={15} />
+              <span>Get in Touch</span>
             </a>
           </div>
         </div>

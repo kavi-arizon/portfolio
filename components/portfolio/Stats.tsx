@@ -1,63 +1,59 @@
 import React from "react";
-import { FolderGit2, Code2, Clock, CheckCircle2 } from "lucide-react";
+import { FolderGit2, Code2, Clock, Award } from "lucide-react";
 import { PROFILE } from "@/data/profile";
 
 export default function Stats() {
   if (!PROFILE.stats) return null;
 
-  const statItems: { label: string; value: string; icon: React.ReactNode }[] = [];
-
-  if (PROFILE.stats.projectsBuilt) {
-    statItems.push({
-      label: "Portfolio Projects",
-      value: PROFILE.stats.projectsBuilt,
-      icon: <FolderGit2 size={18} className="text-cyan-400" />,
-    });
-  }
-
-  if (PROFILE.stats.technologies) {
-    statItems.push({
-      label: "Core Tech Stack",
-      value: PROFILE.stats.technologies,
-      icon: <Code2 size={18} className="text-emerald-400" />,
-    });
-  }
-
-  if (PROFILE.stats.yearsExperience) {
-    statItems.push({
-      label: "Experience",
-      value: PROFILE.stats.yearsExperience,
-      icon: <Clock size={18} className="text-violet-400" />,
-    });
-  }
-
-  if (PROFILE.stats.currentRole) {
-    statItems.push({
-      label: "Current Status",
-      value: PROFILE.stats.currentRole,
-      icon: <CheckCircle2 size={18} className="text-amber-400" />,
-    });
-  }
-
-  if (statItems.length === 0) return null;
+  const statItems = [
+    {
+      label: "Portfolio Applications",
+      value: "3 Shipped Apps",
+      detail: "Weather Pro · Grade Calc · Next.js Portfolio",
+      icon: <FolderGit2 size={15} className="text-emerald-400" />,
+    },
+    {
+      label: "Production Stack",
+      value: "15+ Technologies",
+      detail: "Next.js 15 · React 19 · TS · Catalyst · CMS",
+      icon: <Code2 size={15} className="text-teal-400" />,
+    },
+    {
+      label: "Professional Experience",
+      value: "1+ Year Engineering",
+      detail: "Associate SE (L1) & Former Intern @ Arizon",
+      icon: <Clock size={15} className="text-emerald-400" />,
+    },
+    {
+      label: "Verified Recognition",
+      value: "Rock Star Award",
+      detail: "Recognized for ownership & client delivery",
+      icon: <Award size={15} className="text-amber-400" />,
+    },
+  ];
 
   return (
-    <section className="relative z-10 -mt-8 sm:-mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Key Statistics">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 backdrop-blur-xl shadow-2xl">
+    <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16" aria-label="Key Qualifications">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-2 rounded-2xl bg-obsidian-850/80 border border-white/[0.08] backdrop-blur-xl shadow-lg">
         {statItems.map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-slate-800/50 hover:border-slate-700 transition-colors"
+            className="flex flex-col justify-between p-4 rounded-xl bg-obsidian-950/60 border border-white/[0.05] hover:border-white/[0.12] transition-colors"
           >
-            <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 shrink-0">
-              {item.icon}
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400">
+                {item.label}
+              </span>
+              <div className="p-1.5 rounded-md bg-obsidian-800 border border-white/[0.06]">
+                {item.icon}
+              </div>
             </div>
-            <div className="min-w-0">
-              <div className="font-bold text-white text-sm sm:text-base tracking-tight truncate">
+            <div>
+              <div className="text-base font-bold text-white tracking-tight">
                 {item.value}
               </div>
-              <div className="text-[11px] sm:text-xs text-slate-400 font-medium truncate">
-                {item.label}
+              <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
+                {item.detail}
               </div>
             </div>
           </div>

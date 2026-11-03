@@ -1,115 +1,114 @@
 import React from "react";
-import { Mail, Github, Linkedin, MapPin, MessageSquare, Clock, ArrowUpRight } from "lucide-react";
+import { Mail, Github, Linkedin, MessageSquare, Clock, ArrowUpRight } from "lucide-react";
 import { PROFILE } from "@/data/profile";
 import ContactForm from "./ContactForm";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-cyan-600/5 rounded-full blur-3xl pointer-events-none" />
-
+    <section id="contact" className="py-20 md:py-28 relative overflow-hidden" aria-labelledby="contact-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-xs font-mono text-cyan-300 mb-3">
-            <MessageSquare size={13} />
-            <span>LET&apos;S CONNECT</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/[0.08] gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-emerald-400 mb-2 font-medium">
+              <span>[ 07 // INQUIRIES ]</span>
+            </div>
+            <h2
+              id="contact-heading"
+              className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight"
+            >
+              Get in Touch &amp; Start a Conversation
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Get in Touch &amp; Start a Conversation
-          </h2>
-          <p className="text-sm sm:text-base text-slate-400 mt-2">
-            Interested in hiring for a role, discussing a freelance build, or exploring technical collaboration? Send a direct message below.
+          <p className="text-xs font-mono text-slate-400 max-w-xs text-right hidden md:block">
+            Chennai, India · Open to Opportunities
           </p>
         </div>
 
         {/* Contact Layout Grid */}
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column: Direct Communication Cards */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-3">
-              {/* Email Card */}
-              {PROFILE.email && (
-                <a
-                  href={`mailto:${PROFILE.email}`}
-                  className="group flex items-start gap-4 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/90 transition-all shadow-card-subtle"
-                >
-                  <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 shrink-0 group-hover:scale-105 transition-transform">
-                    <Mail size={20} />
+          <div className="lg:col-span-5 space-y-4">
+            {/* Direct Email Card */}
+            {PROFILE.email && (
+              <a
+                href={`mailto:${PROFILE.email}`}
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-gradient-card border border-white/[0.08] hover:border-emerald-500/40 transition-all shadow-card-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <div className="p-3 rounded-xl bg-obsidian-800 border border-white/[0.08] text-emerald-400 shrink-0 group-hover:scale-105 transition-transform">
+                  <Mail size={18} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[10px] font-mono tracking-widest uppercase text-slate-400">
+                    Direct Email
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                      Direct Email
-                    </div>
-                    <div className="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors truncate">
-                      {PROFILE.email}
-                    </div>
-                    <div className="text-xs text-slate-500 mt-0.5">
-                      Fastest response for recruitment &amp; opportunities
-                    </div>
+                  <div className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors truncate mt-0.5">
+                    {PROFILE.email}
                   </div>
-                  <ArrowUpRight size={16} className="text-slate-500 group-hover:text-cyan-300 transition-colors shrink-0" />
-                </a>
-              )}
+                  <div className="text-xs text-slate-500 mt-0.5">
+                    Fastest response for inquiries &amp; opportunities
+                  </div>
+                </div>
+                <ArrowUpRight size={15} className="text-slate-500 group-hover:text-emerald-300 transition-colors shrink-0 mt-1" />
+              </a>
+            )}
 
-              {/* GitHub Card */}
-              {PROFILE.social.github && (
-                <a
-                  href={PROFILE.social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/90 transition-all shadow-card-subtle"
-                >
-                  <div className="p-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 shrink-0 group-hover:scale-105 transition-transform">
-                    <Github size={20} />
+            {/* GitHub Card */}
+            {PROFILE.social.github && (
+              <a
+                href={PROFILE.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-gradient-card border border-white/[0.08] hover:border-emerald-500/40 transition-all shadow-card-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <div className="p-3 rounded-xl bg-obsidian-800 border border-white/[0.08] text-slate-300 shrink-0 group-hover:scale-105 transition-transform">
+                  <Github size={18} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[10px] font-mono tracking-widest uppercase text-slate-400">
+                    GitHub Profile
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                      GitHub Repositories
-                    </div>
-                    <div className="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors truncate">
-                      {PROFILE.social.github.replace("https://", "")}
-                    </div>
-                    <div className="text-xs text-slate-500 mt-0.5">
-                      Explore full source code &amp; open contributions
-                    </div>
+                  <div className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors truncate mt-0.5">
+                    {PROFILE.social.github.replace("https://", "")}
                   </div>
-                  <ArrowUpRight size={16} className="text-slate-500 group-hover:text-cyan-300 transition-colors shrink-0" />
-                </a>
-              )}
+                  <div className="text-xs text-slate-500 mt-0.5">
+                    Source repositories &amp; open-source projects
+                  </div>
+                </div>
+                <ArrowUpRight size={15} className="text-slate-500 group-hover:text-emerald-300 transition-colors shrink-0 mt-1" />
+              </a>
+            )}
 
-              {/* LinkedIn Card */}
-              {PROFILE.social.linkedin && (
-                <a
-                  href={PROFILE.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900/90 transition-all shadow-card-subtle"
-                >
-                  <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0 group-hover:scale-105 transition-transform">
-                    <Linkedin size={20} />
+            {/* LinkedIn Card */}
+            {PROFILE.social.linkedin && (
+              <a
+                href={PROFILE.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-gradient-card border border-white/[0.08] hover:border-emerald-500/40 transition-all shadow-card-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+              >
+                <div className="p-3 rounded-xl bg-obsidian-800 border border-white/[0.08] text-emerald-400 shrink-0 group-hover:scale-105 transition-transform">
+                  <Linkedin size={18} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[10px] font-mono tracking-widest uppercase text-slate-400">
+                    LinkedIn Network
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                      LinkedIn Network
-                    </div>
-                    <div className="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors truncate">
-                      Professional Profile
-                    </div>
-                    <div className="text-xs text-slate-500 mt-0.5">
-                      Career background, recommendations &amp; networking
-                    </div>
+                  <div className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors truncate mt-0.5">
+                    Professional Profile
                   </div>
-                  <ArrowUpRight size={16} className="text-slate-500 group-hover:text-cyan-300 transition-colors shrink-0" />
-                </a>
-              )}
-            </div>
+                  <div className="text-xs text-slate-500 mt-0.5">
+                    Career background &amp; professional recommendations
+                  </div>
+                </div>
+                <ArrowUpRight size={15} className="text-slate-500 group-hover:text-emerald-300 transition-colors shrink-0 mt-1" />
+              </a>
+            )}
 
-            {/* Info badge: Response time */}
-            <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center gap-3 text-xs text-slate-400">
-              <Clock size={16} className="text-cyan-400 shrink-0" />
-              <span>Typical response time is within <strong>24 business hours</strong>.</span>
+            {/* Response Time Badge */}
+            <div className="p-4 rounded-xl bg-obsidian-950/70 border border-white/[0.06] flex items-center gap-2.5 text-xs text-slate-400">
+              <Clock size={15} className="text-emerald-400 shrink-0" />
+              <span>Standard response time is within <strong>24 business hours</strong>.</span>
             </div>
           </div>
 

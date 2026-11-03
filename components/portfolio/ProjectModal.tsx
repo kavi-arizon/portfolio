@@ -52,7 +52,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-ink/60 backdrop-blur-md animate-fade-in"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-project-title"
@@ -62,16 +62,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-3xl max-h-[92vh] flex flex-col rounded-2xl bg-charcoal-900 border border-white/[0.1] shadow-2xl overflow-hidden my-auto"
+        className="relative w-full max-w-3xl max-h-[92vh] flex flex-col rounded-2xl bg-white border border-surface-border shadow-2xl overflow-hidden my-auto"
       >
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-charcoal-850 border-b border-white/[0.08] shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 bg-canvas border-b border-surface-border shrink-0">
           <div className="flex items-center gap-2.5">
-            <span className="px-2.5 py-1 rounded-md bg-forest-950/60 border border-forest-500/30 text-xs font-medium text-forest-300">
+            <span className="px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 text-xs font-semibold text-accent">
               {project.categoryLabel}
             </span>
             {project.completionDate && (
-              <span className="text-xs text-slate-400 flex items-center gap-1 font-medium">
+              <span className="text-xs text-ink-secondary flex items-center gap-1 font-medium">
                 <Calendar size={13} />
                 {project.completionDate}
               </span>
@@ -82,7 +82,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-charcoal-800 hover:bg-charcoal-750 text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400"
+            className="p-1.5 rounded-lg bg-white hover:bg-surface-muted/60 text-ink-secondary hover:text-ink transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
             aria-label="Close project case study"
           >
             <X size={18} />
@@ -95,11 +95,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div>
             <h3
               id="modal-project-title"
-              className="text-2xl sm:text-3xl font-bold text-white tracking-tight"
+              className="text-2xl sm:text-3xl font-bold text-ink tracking-tight"
             >
               {project.title}
             </h3>
-            <p className="text-sm text-forest-300 font-medium mt-1">
+            <p className="text-sm text-accent font-semibold mt-1">
               {project.tagline}
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-forest-600 hover:bg-forest-500 text-white font-medium text-xs sm:text-sm transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-xs sm:text-sm transition-colors shadow-accent-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <ExternalLink size={14} />
                 <span>Open Live Application</span>
@@ -122,7 +122,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-charcoal-800 hover:bg-charcoal-750 border border-white/[0.08] text-slate-200 hover:text-white font-medium text-xs sm:text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-canvas hover:bg-surface-muted/60 border border-surface-border text-ink hover:text-accent font-medium text-xs sm:text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
               >
                 <Github size={14} />
                 <span>View Source Code</span>
@@ -133,7 +133,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.v1GithubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-white/[0.06] text-slate-400 hover:text-slate-200 text-xs font-mono transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-canvas hover:bg-surface-muted/60 border border-surface-border text-ink-secondary hover:text-ink text-xs font-mono transition-colors"
               >
                 <Github size={13} />
                 <span>{project.v1Title || "View v1 Archive"}</span>
@@ -142,12 +142,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
 
           {/* Overview */}
-          <div className="p-5 rounded-xl bg-charcoal-850/80 border border-white/[0.07] space-y-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <BookOpen size={14} className="text-forest-400" />
+          <div className="p-5 rounded-xl bg-canvas/80 border border-surface-border space-y-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-ink-secondary flex items-center gap-1.5">
+              <BookOpen size={14} className="text-accent" />
               Project Overview
             </h4>
-            <p className="text-sm text-slate-300 leading-relaxed font-normal">
+            <p className="text-sm text-ink-secondary leading-relaxed font-normal">
               {project.longDescription || project.description}
             </p>
           </div>
@@ -156,24 +156,24 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {(project.problem || project.solution) && (
             <div className="grid md:grid-cols-2 gap-4">
               {project.problem && (
-                <div className="p-5 rounded-xl bg-charcoal-850/60 border border-white/[0.07] space-y-1.5">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                <div className="p-5 rounded-xl bg-canvas/80 border border-surface-border space-y-1.5">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-rose-500 flex items-center gap-1.5">
                     <AlertTriangle size={14} />
                     The Problem
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-normal">
                     {project.problem}
                   </p>
                 </div>
               )}
 
               {project.solution && (
-                <div className="p-5 rounded-xl bg-forest-950/20 border border-forest-500/25 space-y-1.5">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-forest-400 flex items-center gap-1.5">
+                <div className="p-5 rounded-xl bg-accent/5 border border-accent/20 space-y-1.5">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-accent flex items-center gap-1.5">
                     <Lightbulb size={14} />
                     The Solution
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-normal">
                     {project.solution}
                   </p>
                 </div>
@@ -184,18 +184,18 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Key Features */}
           {project.features && project.features.length > 0 && (
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                <Sparkles size={14} className="text-forest-400" />
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-ink-secondary flex items-center gap-1.5">
+                <Sparkles size={14} className="text-accent" />
                 Key Features &amp; Implementation Details
               </h4>
               <div className="grid sm:grid-cols-2 gap-2.5">
                 {project.features.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2.5 p-3 rounded-lg bg-charcoal-850/60 border border-white/[0.05] text-xs sm:text-sm text-slate-300"
+                    className="flex items-start gap-2.5 p-3 rounded-lg bg-canvas border border-surface-border text-xs sm:text-sm text-ink-secondary"
                   >
-                    <CheckCircle2 size={15} className="text-forest-400 mt-0.5 shrink-0" />
-                    <span>{feature}</span>
+                    <CheckCircle2 size={15} className="text-accent mt-0.5 shrink-0" />
+                    <span className="font-normal">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -204,15 +204,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Technologies Used */}
           <div className="space-y-2.5">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <Layers size={14} className="text-forest-400" />
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-ink-secondary flex items-center gap-1.5">
+              <Layers size={14} className="text-accent" />
               Engineering Stack
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2.5 py-1 rounded-md bg-charcoal-800 border border-white/[0.08] text-xs font-mono text-slate-200"
+                  className="px-2.5 py-1 rounded-md bg-canvas border border-surface-border text-xs font-medium text-ink"
                 >
                   {tech}
                 </span>

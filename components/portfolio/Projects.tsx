@@ -35,28 +35,28 @@ export default function Projects() {
     : filteredProjects;
 
   return (
-    <section id="projects" className="py-20 md:py-28 relative overflow-hidden" aria-labelledby="projects-heading">
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+    <section id="projects" className="py-16 md:py-24 relative overflow-hidden" aria-labelledby="projects-heading">
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/[0.08] gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-surface-border gap-6">
           <div>
-            <span className="text-xs font-semibold tracking-wider uppercase text-forest-400 mb-2 block">
+            <span className="text-xs font-semibold tracking-wider uppercase text-accent mb-2 block">
               Portfolio
             </span>
             <h2
               id="projects-heading"
-              className="text-3xl sm:text-4xl font-bold text-white tracking-tight"
+              className="text-3xl sm:text-4xl font-bold text-ink tracking-tight"
             >
               Selected Applications &amp; Case Studies
             </h2>
-            <p className="text-sm sm:text-base text-slate-400 mt-2 max-w-2xl font-normal">
+            <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-2xl font-normal">
               Production web applications engineered with modular component systems, reactive calculation engines, and real-time APIs.
             </p>
           </div>
 
           {/* Project Filter Pills */}
           <div
-            className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-charcoal-850 border border-white/[0.08] self-start md:self-auto"
+            className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-white border border-surface-border shadow-soft-sm self-start md:self-auto"
             role="tablist"
             aria-label="Filter applications by category"
           >
@@ -69,10 +69,10 @@ export default function Projects() {
                   role="tab"
                   aria-selected={isSelected}
                   onClick={() => setSelectedFilter(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400 ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     isSelected
-                      ? "bg-forest-950/60 text-forest-300 border border-forest-500/30 shadow-sm"
-                      : "text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]"
+                      ? "bg-accent text-white shadow-sm font-semibold"
+                      : "text-ink-secondary hover:text-ink hover:bg-surface-muted/50"
                   }`}
                 >
                   {tab.label}
@@ -110,8 +110,8 @@ export default function Projects() {
             </div>
           </div>
         ) : (
-          <div className="p-12 text-center rounded-2xl bg-charcoal-850/60 border border-white/[0.08]">
-            <p className="text-sm text-slate-400">No projects found matching this filter.</p>
+          <div className="p-12 text-center rounded-2xl bg-white border border-surface-border shadow-soft-sm">
+            <p className="text-sm text-ink-secondary">No projects found matching this filter.</p>
           </div>
         )}
 

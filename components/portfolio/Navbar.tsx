@@ -14,7 +14,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 24);
+      setScrolled(window.scrollY > 20);
 
       const sections = NAV_LINKS.map((link) => link.href.replace("#", ""));
       const scrollPosition = window.scrollY + 140;
@@ -72,28 +72,28 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-charcoal-900/90 backdrop-blur-xl border-b border-white/[0.07] py-3.5 shadow-xl shadow-black/20"
+          ? "bg-[#F5F5F0]/92 backdrop-blur-xl border-b border-surface-border py-3 shadow-soft-sm"
           : "bg-transparent py-5 sm:py-6"
       }`}
     >
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
         {/* Brand Monogram & Name */}
         <a
           href="#"
-          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400 rounded-lg p-1"
+          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg p-1"
           aria-label={`${PROFILE.name} - Back to top`}
         >
-          <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-charcoal-800 border border-white/[0.1] group-hover:border-forest-500/50 transition-colors duration-300 shadow-sm">
-            <span className="font-mono text-xs font-bold tracking-tight text-white group-hover:text-forest-400 transition-colors">
+          <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-white border border-surface-border group-hover:border-accent transition-colors duration-300 shadow-sm">
+            <span className="font-mono text-xs font-bold tracking-tight text-ink group-hover:text-accent transition-colors">
               {PROFILE.name.charAt(0)}
             </span>
-            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-forest-500 ring-2 ring-charcoal-900" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-accent ring-2 ring-canvas" />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold tracking-tight text-white group-hover:text-forest-300 transition-colors">
+            <span className="text-sm font-semibold tracking-tight text-ink group-hover:text-accent transition-colors">
               {PROFILE.name}
             </span>
-            <span className="text-[11px] text-slate-400 font-normal -mt-0.5 hidden xs:inline-block">
+            <span className="text-[11px] text-ink-secondary font-normal -mt-0.5 hidden xs:inline-block">
               Associate Software Engineer
             </span>
           </div>
@@ -101,7 +101,7 @@ export default function Navbar() {
 
         {/* Center Desktop Navigation Pill */}
         <nav
-          className="hidden md:flex items-center gap-1 px-3.5 py-1.5 rounded-full bg-charcoal-850/90 border border-white/[0.08] backdrop-blur-lg shadow-sm"
+          className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/95 border border-surface-border shadow-soft-sm backdrop-blur-md"
           aria-label="Main Navigation"
         >
           {NAV_LINKS.map((link) => {
@@ -115,10 +115,10 @@ export default function Navbar() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className={`relative px-3.5 py-1 rounded-full text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400 ${
+                className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   isActive
-                    ? "text-forest-300 bg-forest-950/60 border border-forest-500/30 shadow-sm font-semibold"
-                    : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                    ? "text-white bg-accent shadow-sm font-semibold"
+                    : "text-ink-secondary hover:text-ink hover:bg-surface-muted/50"
                 }`}
               >
                 {link.label}
@@ -134,12 +134,12 @@ export default function Navbar() {
               href={PROFILE.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-charcoal-800 hover:bg-charcoal-750 border border-white/[0.08] hover:border-white/[0.16] text-xs font-medium text-slate-300 hover:text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-surface-muted/60 border border-surface-border text-xs font-medium text-ink-secondary hover:text-ink transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
               aria-label="View Resume (opens in new tab)"
             >
-              <FileText size={13} className="text-forest-400" />
+              <FileText size={13} className="text-accent" />
               <span>Resume</span>
-              <ArrowUpRight size={11} className="text-slate-500" />
+              <ArrowUpRight size={11} className="text-ink-muted" />
             </a>
           )}
 
@@ -149,7 +149,7 @@ export default function Navbar() {
               e.preventDefault();
               handleNavClick("#contact");
             }}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-forest-600 hover:bg-forest-500 text-white font-medium text-xs transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-accent hover:bg-accent-hover text-white font-medium text-xs transition-all shadow-accent-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <span>Let&apos;s Connect</span>
             <Send size={11} />
@@ -163,10 +163,10 @@ export default function Navbar() {
               href={PROFILE.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-charcoal-800 border border-white/[0.08] text-[11px] font-medium text-slate-300"
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-white border border-surface-border text-[11px] font-medium text-ink"
               aria-label="View Resume"
             >
-              <FileText size={12} className="text-forest-400" />
+              <FileText size={12} className="text-accent" />
               <span>Resume</span>
             </a>
           )}
@@ -175,7 +175,7 @@ export default function Navbar() {
             ref={menuButtonRef}
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-charcoal-850 border border-white/[0.1] text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400"
+            className="p-2 rounded-lg bg-white border border-surface-border text-ink hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav-menu"
@@ -190,13 +190,13 @@ export default function Navbar() {
         <div
           id="mobile-nav-menu"
           ref={mobileMenuRef}
-          className="fixed inset-0 top-[60px] z-40 bg-charcoal-950/98 backdrop-blur-2xl border-t border-white/[0.08] p-6 flex flex-col justify-between md:hidden overflow-y-auto"
+          className="fixed inset-0 top-[60px] z-40 bg-canvas/98 backdrop-blur-2xl border-t border-surface-border p-6 flex flex-col justify-between md:hidden overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation Menu"
         >
           <div className="space-y-1.5 py-2">
-            <div className="text-[11px] tracking-wider uppercase text-slate-500 px-3 pb-2 font-medium">
+            <div className="text-[11px] tracking-wider uppercase text-ink-secondary px-3 pb-2 font-medium">
               Navigation
             </div>
             {NAV_LINKS.map((link) => {
@@ -212,8 +212,8 @@ export default function Navbar() {
                   }}
                   className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                     isActive
-                      ? "bg-forest-950/50 text-forest-300 border border-forest-500/30"
-                      : "text-slate-300 hover:bg-white/[0.03] hover:text-white"
+                      ? "bg-accent text-white shadow-sm font-semibold"
+                      : "text-ink hover:bg-surface-muted/50"
                   }`}
                 >
                   {link.label}
@@ -222,17 +222,17 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="pt-6 border-t border-white/[0.08] space-y-3 pb-6">
+          <div className="pt-6 border-t border-surface-border space-y-3 pb-6">
             {PROFILE.resumeUrl && (
               <a
                 href={PROFILE.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-charcoal-800 border border-white/[0.08] text-slate-200 font-medium text-sm"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-white border border-surface-border text-ink font-medium text-sm shadow-soft-sm"
               >
-                <FileText size={15} className="text-forest-400" />
+                <FileText size={15} className="text-accent" />
                 <span>Download Curriculum Vitae</span>
-                <ArrowUpRight size={13} className="text-slate-500" />
+                <ArrowUpRight size={13} className="text-ink-muted" />
               </a>
             )}
             <a
@@ -241,7 +241,7 @@ export default function Navbar() {
                 e.preventDefault();
                 handleNavClick("#contact");
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-forest-600 hover:bg-forest-500 text-white font-medium text-sm transition-colors shadow-sm"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-medium text-sm transition-colors shadow-accent-sm"
             >
               <Send size={15} />
               <span>Get in Touch</span>

@@ -6,18 +6,18 @@ export default function CurrentlyLearning() {
   if (!PROFILE.currentlyLearning || PROFILE.currentlyLearning.length === 0) return null;
 
   return (
-    <section className="py-16 relative border-t border-white/[0.07] bg-charcoal-950/40" aria-label="Continuous Growth">
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-        <div className="p-6 sm:p-8 rounded-2xl bg-charcoal-850 border border-white/[0.08] shadow-editorial-card backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-forest-400">
+    <section className="py-14 relative border-t border-surface-border bg-white/40" aria-label="Continuous Growth">
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-surface-border shadow-soft-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-1.5 max-w-xl">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent">
               <BookOpen size={14} />
               <span>Continuous Growth</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-bold text-ink tracking-tight">
               Expanding Full-Stack &amp; Systems Frontiers
             </h3>
-            <p className="text-sm text-slate-300 leading-relaxed font-normal">
+            <p className="text-sm text-ink-secondary leading-relaxed font-normal">
               Deepening architectural understanding in full-stack data flow, serverless edge runtimes, containerization, and scalable database integrations.
             </p>
           </div>
@@ -26,9 +26,9 @@ export default function CurrentlyLearning() {
             {PROFILE.currentlyLearning.map((topic) => (
               <div
                 key={topic}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-charcoal-900 border border-white/[0.07] text-xs font-medium text-slate-200"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-canvas border border-surface-border text-xs font-medium text-ink shadow-soft-sm"
               >
-                <Sparkles size={12} className="text-forest-400 shrink-0" />
+                <Sparkles size={12} className="text-accent shrink-0" />
                 <span>{topic}</span>
               </div>
             ))}

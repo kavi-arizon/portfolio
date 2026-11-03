@@ -76,7 +76,7 @@ export default function Navbar() {
           : "bg-transparent py-5 sm:py-6"
       }`}
     >
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 flex items-center justify-between">
         {/* Brand Monogram & Name */}
         <a
           href="#"
@@ -101,7 +101,7 @@ export default function Navbar() {
 
         {/* Center Desktop Navigation Pill */}
         <nav
-          className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/95 border border-surface-border shadow-soft-sm backdrop-blur-md"
+          className="hidden md:flex items-center gap-1 px-3.5 py-1.5 rounded-full bg-white/95 border border-surface-border shadow-soft-sm backdrop-blur-md"
           aria-label="Main Navigation"
         >
           {NAV_LINKS.map((link) => {
@@ -115,7 +115,7 @@ export default function Navbar() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   isActive
                     ? "text-white bg-accent shadow-sm font-semibold"
                     : "text-ink-secondary hover:text-ink hover:bg-surface-muted/50"
@@ -134,7 +134,7 @@ export default function Navbar() {
               href={PROFILE.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white hover:bg-surface-muted/60 border border-surface-border text-xs font-medium text-ink-secondary hover:text-ink transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white hover:bg-surface-muted/60 border border-surface-border text-xs font-medium text-ink-secondary hover:text-ink transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
               aria-label="View Resume (opens in new tab)"
             >
               <FileText size={13} className="text-accent" />

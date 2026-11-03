@@ -6,8 +6,8 @@ export default function Experience() {
   if (EXPERIENCES.length === 0) return null;
 
   return (
-    <section id="experience" className="py-16 md:py-24 relative overflow-hidden" aria-labelledby="experience-heading">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+    <section id="experience" className="py-16 md:py-24 relative overflow-hidden w-full" aria-labelledby="experience-heading">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-surface-border gap-4">
           <div>
@@ -16,25 +16,25 @@ export default function Experience() {
             </span>
             <h2
               id="experience-heading"
-              className="text-3xl sm:text-4xl font-bold text-ink tracking-tight"
+              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
             >
               Professional Engineering Experience
             </h2>
           </div>
-          <p className="text-sm text-ink-secondary max-w-sm text-left md:text-right font-medium">
+          <p className="text-sm sm:text-base text-ink-secondary max-w-sm text-left md:text-right font-medium">
             Production Storefronts &amp; Feature Delivery
           </p>
         </div>
 
         {/* Timeline Stack */}
-        <div className="space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-6 before:w-[2px] before:bg-gradient-to-b before:from-accent before:via-surface-border before:to-transparent">
+        <div className="space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-6 before:w-[2px] before:bg-gradient-to-b before:from-accent before:via-surface-border before:to-transparent w-full">
           {EXPERIENCES.map((exp) => (
-            <div key={exp.id} className="relative pl-8 md:pl-16 group">
+            <div key={exp.id} className="relative pl-8 md:pl-16 group w-full">
               {/* Timeline marker */}
               <div className="absolute left-[3px] md:left-[17px] top-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-accent group-hover:bg-accent transition-all duration-300" />
 
               {/* Card Container */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-white border border-surface-border hover:border-accent/40 shadow-soft-sm hover:shadow-soft-md transition-all duration-300">
+              <div className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-white border border-surface-border hover:border-accent/40 shadow-soft-sm hover:shadow-soft-md transition-all duration-300 w-full">
                 {/* Header row */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 mb-4 pb-4 border-b border-surface-muted">
                   <div>
@@ -69,7 +69,7 @@ export default function Experience() {
 
                 {/* Description */}
                 {exp.description && (
-                  <p className="text-sm sm:text-base text-ink-secondary leading-relaxed mb-6 font-normal">
+                  <p className="text-sm sm:text-base text-ink-secondary leading-relaxed mb-6 font-normal max-w-4xl">
                     {exp.description}
                   </p>
                 )}
@@ -80,7 +80,7 @@ export default function Experience() {
                     <span className="text-xs font-semibold uppercase tracking-wider text-ink-secondary block">
                       Key Deliverables &amp; Engineering Contributions:
                     </span>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 max-w-4xl">
                       {exp.responsibilities.map((resp, idx) => (
                         <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-secondary leading-relaxed">
                           <CheckCircle2 size={15} className="text-accent mt-0.5 shrink-0" />
@@ -93,7 +93,7 @@ export default function Experience() {
 
                 {/* Milestones / Awards Callout */}
                 {exp.achievements && exp.achievements.length > 0 && (
-                  <div className="space-y-2 mb-6 p-4 sm:p-5 rounded-xl bg-accent/5 border border-accent/20">
+                  <div className="space-y-2 mb-6 p-4 sm:p-5 rounded-xl bg-accent/5 border border-accent/20 max-w-4xl">
                     <span className="text-xs font-semibold uppercase tracking-wider text-accent flex items-center gap-1.5">
                       <Award size={15} />
                       Milestones &amp; Recognition:

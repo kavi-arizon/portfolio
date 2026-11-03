@@ -13,11 +13,11 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden" aria-labelledby="hero-title">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 w-full">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Main Editorial Narrative (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+    <section className="relative pt-32 pb-14 md:pt-40 md:pb-20 overflow-hidden w-full" aria-labelledby="hero-title">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-center w-full">
+          {/* Main Editorial Narrative */}
+          <div className="lg:col-span-7 xl:col-span-7 2xl:col-span-8 space-y-6">
             {/* Live Role & Location Tag */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-surface-border text-xs text-ink shadow-soft-sm">
               <span className="relative flex h-2 w-2">
@@ -38,17 +38,17 @@ export default function Hero() {
             <div className="space-y-3.5">
               <h1
                 id="hero-title"
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink leading-[1.08]"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-ink leading-[1.08]"
               >
                 Kaviyarasu <span className="text-accent">C.</span>
               </h1>
-              <p className="text-xl sm:text-2xl font-semibold text-ink tracking-tight leading-snug">
+              <p className="text-xl sm:text-2xl xl:text-3xl font-semibold text-ink tracking-tight leading-snug">
                 Full Stack Software Engineer | React, Next.js &amp; Headless Commerce
               </p>
             </div>
 
             {/* Introduction */}
-            <p className="text-base sm:text-lg text-ink-secondary leading-relaxed max-w-2xl font-normal">
+            <p className="text-base sm:text-lg xl:text-xl text-ink-secondary leading-relaxed max-w-3xl font-normal">
               {PROFILE.introHeadline} Experienced in delivering scalable e-commerce storefronts, reusable component architectures, and robust API integrations.
             </p>
 
@@ -61,7 +61,7 @@ export default function Hero() {
                 {PROFILE.currentlyWorkingWith.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-white border border-surface-border text-xs font-medium text-ink hover:border-accent hover:text-accent shadow-soft-sm transition-colors"
+                    className="px-3.5 py-1.5 rounded-lg bg-white border border-surface-border text-xs sm:text-sm font-medium text-ink hover:border-accent hover:text-accent shadow-soft-sm transition-colors"
                   >
                     {tech}
                   </span>
@@ -104,7 +104,7 @@ export default function Hero() {
             </div>
 
             {/* Direct Profiles */}
-            <div className="flex items-center gap-4 pt-1 text-xs text-ink-secondary">
+            <div className="flex items-center gap-4 pt-1 text-xs sm:text-sm text-ink-secondary">
               <span className="font-medium text-ink-secondary">Verified Profiles:</span>
               {PROFILE.social.github && (
                 <a
@@ -134,9 +134,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Editorial Engineering Spotlight Card (5 cols) */}
-          <div className="lg:col-span-5 w-full">
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-surface-border shadow-soft-md space-y-5">
+          {/* Right Column: Editorial Engineering Spotlight Card */}
+          <div className="lg:col-span-5 xl:col-span-5 2xl:col-span-4 w-full">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-surface-border shadow-soft-md space-y-6">
               {/* Header */}
               <div className="flex items-center justify-between pb-4 border-b border-surface-muted">
                 <div>
@@ -156,7 +156,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-ink">Associate Software Engineer (L1)</h4>
-                    <p className="text-xs text-ink-secondary mt-1 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-ink-secondary mt-1 leading-relaxed font-normal">
                       Engineering modern e-commerce storefronts with BigCommerce Catalyst, Makeswift CMS visual builder, and Next.js 15.
                     </p>
                   </div>
@@ -168,7 +168,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-ink">Rock Star Award (2026)</h4>
-                    <p className="text-xs text-ink-secondary mt-1 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-ink-secondary mt-1 leading-relaxed font-normal">
                       Recognized at Arizon Digital for high-impact ownership, consistent client delivery, and technical dependability.
                     </p>
                   </div>
@@ -180,7 +180,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-ink">B.Sc. in Computer Science</h4>
-                    <p className="text-xs text-ink-secondary mt-1 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-ink-secondary mt-1 leading-relaxed font-normal">
                       Annamalai University · Graduated with First Class distinction (75%).
                     </p>
                   </div>
@@ -189,16 +189,16 @@ export default function Hero() {
 
               {/* Summary Stats Row inside spotlight card */}
               <div className="pt-4 border-t border-surface-muted grid grid-cols-3 gap-3 text-center">
-                <div className="p-2.5 rounded-xl bg-canvas border border-surface-border">
-                  <div className="text-lg font-bold text-ink">1.5+ Yr</div>
+                <div className="p-3 rounded-xl bg-canvas border border-surface-border">
+                  <div className="text-lg sm:text-xl font-bold text-ink">1+ Yr</div>
                   <div className="text-[11px] text-ink-secondary mt-0.5">Experience</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-canvas border border-surface-border">
-                  <div className="text-lg font-bold text-ink">3</div>
+                <div className="p-3 rounded-xl bg-canvas border border-surface-border">
+                  <div className="text-lg sm:text-xl font-bold text-ink">3</div>
                   <div className="text-[11px] text-ink-secondary mt-0.5">Shipped Apps</div>
                 </div>
-                <div className="p-2.5 rounded-xl bg-canvas border border-surface-border">
-                  <div className="text-lg font-bold text-ink">15+</div>
+                <div className="p-3 rounded-xl bg-canvas border border-surface-border">
+                  <div className="text-lg sm:text-xl font-bold text-ink">15+</div>
                   <div className="text-[11px] text-ink-secondary mt-0.5">Technologies</div>
                 </div>
               </div>

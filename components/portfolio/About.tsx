@@ -22,8 +22,8 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-16 md:py-24 relative overflow-hidden" aria-labelledby="about-heading">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+    <section id="about" className="py-16 md:py-24 relative overflow-hidden w-full" aria-labelledby="about-heading">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-surface-border gap-4">
           <div>
@@ -32,21 +32,21 @@ export default function About() {
             </span>
             <h2
               id="about-heading"
-              className="text-3xl sm:text-4xl font-bold text-ink tracking-tight"
+              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
             >
               Background &amp; Engineering Philosophy
             </h2>
           </div>
-          <p className="text-sm text-ink-secondary max-w-sm text-left md:text-right font-medium">
+          <p className="text-sm sm:text-base text-ink-secondary max-w-sm text-left md:text-right font-medium">
             Associate Software Engineer (L1) at Arizon Digital
           </p>
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Narrative & Principles (7 cols) */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-4 text-base sm:text-lg text-ink-secondary leading-relaxed font-normal">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20 items-start w-full">
+          {/* Left Column: Narrative & Principles */}
+          <div className="lg:col-span-7 xl:col-span-7 2xl:col-span-8 space-y-8">
+            <div className="space-y-4 text-base sm:text-lg xl:text-xl text-ink-secondary leading-relaxed font-normal max-w-4xl">
               <p>
                 I am an <strong className="text-ink font-semibold">Associate Software Engineer (L1) at Arizon Digital</strong> based in Chennai, India. My journey began as a frontend engineering intern, where I quickly took ownership of production storefront features and transitioned into an engineering role.
               </p>
@@ -63,21 +63,21 @@ export default function About() {
               <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-secondary">
                 Core Engineering Principles
               </h3>
-              <div className="space-y-3.5">
+              <div className="space-y-3.5 max-w-4xl">
                 {principles.map((item) => (
                   <div
                     key={item.num}
-                    className="p-5 rounded-xl bg-white border border-surface-border hover:border-accent/40 shadow-soft-sm transition-all"
+                    className="p-5 sm:p-6 rounded-xl bg-white border border-surface-border hover:border-accent/40 shadow-soft-sm transition-all"
                   >
                     <div className="flex items-baseline gap-3 mb-1.5">
                       <span className="font-mono text-xs font-bold text-accent">
                         {item.num}.
                       </span>
-                      <h4 className="text-base font-semibold text-ink">
+                      <h4 className="text-base sm:text-lg font-semibold text-ink">
                         {item.title}
                       </h4>
                     </div>
-                    <p className="text-sm text-ink-secondary leading-relaxed pl-7 font-normal">
+                    <p className="text-sm sm:text-base text-ink-secondary leading-relaxed pl-7 font-normal">
                       {item.description}
                     </p>
                   </div>
@@ -86,26 +86,26 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Column: Editorial Profile & Facts (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-surface-border shadow-soft-md space-y-6">
+          {/* Right Column: Editorial Profile & Facts */}
+          <div className="lg:col-span-5 xl:col-span-5 2xl:col-span-4 space-y-6 w-full">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-surface-border shadow-soft-md space-y-6">
               {/* Profile Monogram */}
               <div className="flex items-center gap-4 pb-5 border-b border-surface-muted">
                 <div className="w-14 h-14 rounded-xl bg-surface-muted/60 border border-surface-border flex items-center justify-center font-mono font-bold text-accent text-xl shadow-sm">
                   KC
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-ink tracking-tight">{PROFILE.name}</h3>
-                  <p className="text-xs text-accent font-semibold">{PROFILE.role}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-ink tracking-tight">{PROFILE.name}</h3>
+                  <p className="text-xs sm:text-sm text-accent font-semibold">{PROFILE.role}</p>
                   <p className="text-xs text-ink-secondary mt-0.5">Arizon Digital · Chennai, India</p>
                 </div>
               </div>
 
               {/* Verified Facts List */}
-              <div className="space-y-3 text-sm">
+              <div className="space-y-3.5 text-sm sm:text-base">
                 <div className="flex items-start justify-between py-1.5 border-b border-surface-muted">
                   <span className="text-ink-secondary flex items-center gap-2">
-                    <Building2 size={15} className="text-accent" />
+                    <Building2 size={16} className="text-accent" />
                     Organization
                   </span>
                   <span className="text-ink font-semibold text-right">Arizon Digital</span>
@@ -113,7 +113,7 @@ export default function About() {
 
                 <div className="flex items-start justify-between py-1.5 border-b border-surface-muted">
                   <span className="text-ink-secondary flex items-center gap-2">
-                    <Award size={15} className="text-amber-500" />
+                    <Award size={16} className="text-amber-500" />
                     Recognition
                   </span>
                   <span className="text-amber-600 font-semibold text-right">Rock Star Award (2026)</span>
@@ -121,7 +121,7 @@ export default function About() {
 
                 <div className="flex items-start justify-between py-1.5 border-b border-surface-muted">
                   <span className="text-ink-secondary flex items-center gap-2">
-                    <GraduationCap size={15} className="text-ink-secondary" />
+                    <GraduationCap size={16} className="text-ink-secondary" />
                     Education
                   </span>
                   <span className="text-ink font-semibold text-right">B.Sc. CS · First Class (75%)</span>
@@ -129,7 +129,7 @@ export default function About() {
 
                 <div className="flex items-start justify-between py-1.5 border-b border-surface-muted">
                   <span className="text-ink-secondary flex items-center gap-2">
-                    <MapPin size={15} className="text-accent" />
+                    <MapPin size={16} className="text-accent" />
                     Location
                   </span>
                   <span className="text-ink font-medium text-right">Chennai, Tamil Nadu, India</span>
@@ -137,7 +137,7 @@ export default function About() {
 
                 <div className="flex items-start justify-between py-1.5">
                   <span className="text-ink-secondary flex items-center gap-2">
-                    <CheckCircle2 size={15} className="text-accent" />
+                    <CheckCircle2 size={16} className="text-accent" />
                     Availability
                   </span>
                   <span className="text-accent font-semibold text-right">{PROFILE.availability || "Open to Opportunities"}</span>

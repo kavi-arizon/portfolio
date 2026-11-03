@@ -33,9 +33,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-white border-t border-surface-border pt-14 pb-10 overflow-hidden" aria-label="Site Footer">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-surface-muted">
+    <footer className="relative bg-white border-t border-surface-border pt-14 pb-10 overflow-hidden w-full" aria-label="Site Footer">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-surface-muted w-full">
           {/* Brand & Summary */}
           <div className="md:col-span-5 space-y-3">
             <a href="#" className="inline-flex items-center gap-2.5 group" aria-label={`${PROFILE.name} - Back to top`}>
@@ -47,7 +47,7 @@ export default function Footer() {
                 <span className="text-accent">.</span>
               </span>
             </a>
-            <p className="text-sm text-ink-secondary max-w-sm leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-ink-secondary max-w-md leading-relaxed font-normal">
               {PROFILE.role} at Arizon Digital. Engineering scalable e-commerce storefronts, reusable component architectures, and reliable web interfaces.
             </p>
             {time && (
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-secondary font-sans">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-secondary font-sans w-full">
           <div className="flex items-center gap-1">
             <span>&copy; {currentYear} {PROFILE.name}. Built with Next.js 15, TypeScript &amp; Tailwind CSS.</span>
           </div>

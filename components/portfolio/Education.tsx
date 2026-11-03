@@ -6,8 +6,8 @@ export default function Education() {
   if (EDUCATION_LIST.length === 0) return null;
 
   return (
-    <section id="education" className="py-16 md:py-24 relative bg-white/60 border-t border-surface-border" aria-labelledby="education-heading">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+    <section id="education" className="py-16 md:py-24 relative bg-white/60 border-t border-surface-border w-full" aria-labelledby="education-heading">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         {/* Section Header */}
         <div className="mb-10 pb-6 border-b border-surface-border">
           <span className="text-xs font-semibold tracking-wider uppercase text-accent mb-2 block">
@@ -15,21 +15,21 @@ export default function Education() {
           </span>
           <h2
             id="education-heading"
-            className="text-3xl sm:text-4xl font-bold text-ink tracking-tight"
+            className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
           >
             Academic Foundation in Computer Science
           </h2>
-          <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-2xl font-normal">
+          <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-3xl font-normal">
             Solid undergraduate degree focused on algorithmic problem solving, relational database systems, operating systems, and software engineering principles.
           </p>
         </div>
 
         {/* Education Card */}
-        <div className="grid lg:grid-cols-12 gap-8">
+        <div className="w-full">
           {EDUCATION_LIST.map((edu) => (
             <div
               key={edu.id}
-              className="lg:col-span-8 p-6 sm:p-8 rounded-2xl bg-white border border-surface-border shadow-soft-sm relative overflow-hidden"
+              className="w-full p-6 sm:p-8 lg:p-10 rounded-2xl bg-white border border-surface-border shadow-soft-sm relative overflow-hidden"
             >
               {/* Header row */}
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 pb-5 border-b border-surface-muted">
@@ -74,7 +74,7 @@ export default function Education() {
                     {edu.coursework.map((course) => (
                       <span
                         key={course}
-                        className="px-2.5 py-1 rounded-md bg-canvas border border-surface-border text-xs font-medium text-ink"
+                        className="px-3 py-1 rounded-md bg-canvas border border-surface-border text-xs sm:text-sm font-medium text-ink"
                       >
                         {course}
                       </span>

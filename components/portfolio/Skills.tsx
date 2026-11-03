@@ -24,8 +24,8 @@ export default function Skills() {
       : SKILL_CATEGORIES.filter((cat) => cat.id === selectedCategory);
 
   return (
-    <section id="skills" className="py-16 md:py-24 relative bg-white/60 border-y border-surface-border" aria-labelledby="skills-heading">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+    <section id="skills" className="py-16 md:py-24 relative bg-white/60 border-y border-surface-border w-full" aria-labelledby="skills-heading">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-surface-border gap-6">
           <div>
@@ -34,11 +34,11 @@ export default function Skills() {
             </span>
             <h2
               id="skills-heading"
-              className="text-3xl sm:text-4xl font-bold text-ink tracking-tight"
+              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
             >
               Technical Stack &amp; Tooling
             </h2>
-            <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-2xl font-normal">
+            <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-3xl font-normal">
               Frameworks, languages, and modern tools applied daily across production storefronts and full-stack software.
             </p>
           </div>
@@ -59,7 +59,7 @@ export default function Skills() {
                   role="tab"
                   aria-selected={isSelected}
                   onClick={() => setSelectedCategory(tab.id)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     isSelected
                       ? "bg-accent text-white shadow-sm font-semibold"
                       : "text-ink-secondary hover:text-ink hover:bg-surface-muted/50"
@@ -82,7 +82,7 @@ export default function Skills() {
                   <span className="font-mono text-xs text-accent font-bold">
                     0{idx + 1}.
                   </span>
-                  <h3 className="text-lg font-bold text-ink tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-ink tracking-tight">
                     {category.title}
                   </h3>
                 </div>
@@ -92,34 +92,36 @@ export default function Skills() {
               </div>
 
               {category.description && (
-                <p className="text-sm text-ink-secondary max-w-2xl font-normal">
+                <p className="text-sm text-ink-secondary max-w-3xl font-normal">
                   {category.description}
                 </p>
               )}
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 w-full">
                 {category.skills.map((skill: SkillItem) => (
                   <div
                     key={skill.name}
-                    className="group p-4 rounded-xl bg-white border border-surface-border hover:border-accent/40 hover:shadow-soft-md transition-all duration-200 relative"
+                    className="group p-4 sm:p-5 rounded-xl bg-white border border-surface-border hover:border-accent/40 hover:shadow-soft-md transition-all duration-200 relative flex flex-col justify-between"
                   >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <h4 className="font-semibold text-sm text-ink group-hover:text-accent transition-colors">
-                        {skill.name}
-                      </h4>
-                      {skill.highlight && (
-                        <span
-                          className="w-2 h-2 rounded-full bg-accent ring-2 ring-accent/20"
-                          title="Core daily technology"
-                          aria-label="Core technology"
-                        />
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <h4 className="font-semibold text-sm sm:text-base text-ink group-hover:text-accent transition-colors">
+                          {skill.name}
+                        </h4>
+                        {skill.highlight && (
+                          <span
+                            className="w-2 h-2 rounded-full bg-accent ring-2 ring-accent/20"
+                            title="Core daily technology"
+                            aria-label="Core technology"
+                          />
+                        )}
+                      </div>
+                      {skill.description && (
+                        <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-normal">
+                          {skill.description}
+                        </p>
                       )}
                     </div>
-                    {skill.description && (
-                      <p className="text-xs text-ink-secondary leading-relaxed font-normal">
-                        {skill.description}
-                      </p>
-                    )}
                   </div>
                 ))}
               </div>

@@ -24,8 +24,6 @@ export default function Projects() {
     return project.category === selectedFilter;
   });
 
-  // Asymmetrical layout when viewing "all" or "featured":
-  // Featured project (Weather Pro) gets prominent top showcase, remaining projects sit in complementary 2-column grid.
   const isDefaultView = selectedFilter === "all" || selectedFilter === "featured";
   const primaryFeaturedProject = isDefaultView
     ? filteredProjects.find((p) => p.id === "weather-pro") || filteredProjects[0]
@@ -35,8 +33,8 @@ export default function Projects() {
     : filteredProjects;
 
   return (
-    <section id="projects" className="py-16 md:py-24 relative overflow-hidden" aria-labelledby="projects-heading">
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+    <section id="projects" className="py-16 md:py-24 relative overflow-hidden w-full" aria-labelledby="projects-heading">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-surface-border gap-6">
           <div>
@@ -45,11 +43,11 @@ export default function Projects() {
             </span>
             <h2
               id="projects-heading"
-              className="text-3xl sm:text-4xl font-bold text-ink tracking-tight"
+              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
             >
               Selected Applications &amp; Case Studies
             </h2>
-            <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-2xl font-normal">
+            <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-3xl font-normal">
               Production web applications engineered with modular component systems, reactive calculation engines, and real-time APIs.
             </p>
           </div>
@@ -84,7 +82,7 @@ export default function Projects() {
 
         {/* Projects Showcase Container */}
         {filteredProjects.length > 0 ? (
-          <div>
+          <div className="w-full">
             {/* Primary Dominant Showcase if in default view */}
             {isDefaultView && primaryFeaturedProject && (
               <ProjectCard
@@ -97,7 +95,7 @@ export default function Projects() {
             )}
 
             {/* Complementary Grid for remaining or filtered projects */}
-            <div className={`grid gap-7 ${isDefaultView ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3"}`}>
+            <div className={`grid gap-8 w-full ${isDefaultView ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3"}`}>
               {secondaryProjects.map((project, index) => (
                 <ProjectCard
                   key={project.id}
@@ -110,7 +108,7 @@ export default function Projects() {
             </div>
           </div>
         ) : (
-          <div className="p-12 text-center rounded-2xl bg-white border border-surface-border shadow-soft-sm">
+          <div className="p-12 text-center rounded-2xl bg-white border border-surface-border shadow-soft-sm w-full">
             <p className="text-sm text-ink-secondary">No projects found matching this filter.</p>
           </div>
         )}

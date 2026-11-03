@@ -1,63 +1,56 @@
 import React from "react";
-import { FolderGit2, Code2, Clock, Award } from "lucide-react";
+import { FolderGit2, Code2, Briefcase, Award } from "lucide-react";
 import { PROFILE } from "@/data/profile";
 
 export default function Stats() {
   if (!PROFILE.stats) return null;
 
-  const statItems = [
+  const highlights = [
     {
-      label: "Portfolio Applications",
-      value: "3 Shipped Apps",
-      detail: "Weather Pro · Grade Calc · Next.js Portfolio",
-      icon: <FolderGit2 size={15} className="text-emerald-400" />,
+      title: "Production Storefronts & Apps",
+      subtitle: "Weather Pro · Grade Calculator · Portfolio",
+      icon: <FolderGit2 size={16} className="text-forest-400" />,
     },
     {
-      label: "Production Stack",
-      value: "15+ Technologies",
-      detail: "Next.js 15 · React 19 · TS · Catalyst · CMS",
-      icon: <Code2 size={15} className="text-teal-400" />,
+      title: "Modern Full-Stack Stack",
+      subtitle: "Next.js 15, React 19, TypeScript, Catalyst",
+      icon: <Code2 size={16} className="text-forest-400" />,
     },
     {
-      label: "Professional Experience",
-      value: "1+ Year Engineering",
-      detail: "Associate SE (L1) & Former Intern @ Arizon",
-      icon: <Clock size={15} className="text-emerald-400" />,
+      title: "Arizon Digital Experience",
+      subtitle: "Associate Software Engineer (L1) & Former Intern",
+      icon: <Briefcase size={16} className="text-forest-400" />,
     },
     {
-      label: "Verified Recognition",
-      value: "Rock Star Award",
-      detail: "Recognized for ownership & client delivery",
-      icon: <Award size={15} className="text-amber-400" />,
+      title: "Rock Star Award (2026)",
+      subtitle: "Recognized for ownership & client delivery",
+      icon: <Award size={16} className="text-amber-400" />,
     },
   ];
 
   return (
-    <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16" aria-label="Key Qualifications">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-2 rounded-2xl bg-obsidian-850/80 border border-white/[0.08] backdrop-blur-xl shadow-lg">
-        {statItems.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col justify-between p-4 rounded-xl bg-obsidian-950/60 border border-white/[0.05] hover:border-white/[0.12] transition-colors"
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400">
-                {item.label}
-              </span>
-              <div className="p-1.5 rounded-md bg-obsidian-800 border border-white/[0.06]">
+    <section className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 mb-20" aria-label="Key Highlights">
+      <div className="py-6 px-6 sm:px-8 rounded-2xl bg-charcoal-850/60 border border-white/[0.07] backdrop-blur-md">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 lg:divide-x divide-white/[0.07]">
+          {highlights.map((item, index) => (
+            <div
+              key={index}
+              className={`flex items-start gap-3.5 ${index !== 0 ? "lg:pl-6" : ""}`}
+            >
+              <div className="p-2 rounded-lg bg-charcoal-800 border border-white/[0.06] shrink-0 mt-0.5">
                 {item.icon}
               </div>
-            </div>
-            <div>
-              <div className="text-base font-bold text-white tracking-tight">
-                {item.value}
+              <div className="space-y-1">
+                <div className="text-sm font-semibold text-white tracking-tight">
+                  {item.title}
+                </div>
+                <div className="text-xs text-slate-400 leading-relaxed">
+                  {item.subtitle}
+                </div>
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">
-                {item.detail}
-              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

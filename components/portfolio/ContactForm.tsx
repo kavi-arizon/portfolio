@@ -99,11 +99,11 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-6 sm:p-8 rounded-2xl bg-gradient-card border border-white/[0.08] shadow-card-subtle backdrop-blur-md space-y-4"
+      className="p-6 sm:p-8 rounded-2xl bg-charcoal-850 border border-white/[0.08] shadow-editorial-card space-y-5"
       noValidate
       aria-label="Contact inquiry form"
     >
-      {/* Honeypot Spam Protection Field - Hidden from humans */}
+      {/* Honeypot Spam Protection Field */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website-hp">Leave this field blank</label>
         <input
@@ -118,8 +118,8 @@ export default function ContactForm() {
 
       {/* Name Field */}
       <div>
-        <label htmlFor="contact-name" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
-          Your Name <span className="text-emerald-400">*</span>
+        <label htmlFor="contact-name" className="block text-xs font-medium text-slate-300 mb-1.5">
+          Your Name <span className="text-forest-400">*</span>
         </label>
         <input
           type="text"
@@ -132,10 +132,10 @@ export default function ContactForm() {
             if (fieldErrors.name) setFieldErrors({ ...fieldErrors, name: "" });
           }}
           placeholder="e.g. Alex Johnson"
-          className={`w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors ${
+          className={`w-full px-4 py-3 rounded-xl bg-charcoal-900 border text-sm text-white placeholder:text-slate-500 focus:outline-none transition-colors ${
             fieldErrors.name
               ? "border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
-              : "border-white/[0.08] focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30"
+              : "border-white/[0.08] focus:border-forest-500 focus:ring-1 focus:ring-forest-500/30"
           }`}
         />
         {fieldErrors.name && (
@@ -148,8 +148,8 @@ export default function ContactForm() {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="contact-email" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
-          Your Email Address <span className="text-emerald-400">*</span>
+        <label htmlFor="contact-email" className="block text-xs font-medium text-slate-300 mb-1.5">
+          Your Email Address <span className="text-forest-400">*</span>
         </label>
         <input
           type="email"
@@ -162,10 +162,10 @@ export default function ContactForm() {
             if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: "" });
           }}
           placeholder="alex@example.com"
-          className={`w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors ${
+          className={`w-full px-4 py-3 rounded-xl bg-charcoal-900 border text-sm text-white placeholder:text-slate-500 focus:outline-none transition-colors ${
             fieldErrors.email
               ? "border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
-              : "border-white/[0.08] focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30"
+              : "border-white/[0.08] focus:border-forest-500 focus:ring-1 focus:ring-forest-500/30"
           }`}
         />
         {fieldErrors.email && (
@@ -178,8 +178,8 @@ export default function ContactForm() {
 
       {/* Subject Field */}
       <div>
-        <label htmlFor="contact-subject" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
-          Subject <span className="text-slate-500 text-[10px] font-sans lowercase">(optional)</span>
+        <label htmlFor="contact-subject" className="block text-xs font-medium text-slate-300 mb-1.5">
+          Subject <span className="text-slate-500 text-xs font-normal">(optional)</span>
         </label>
         <input
           type="text"
@@ -187,20 +187,20 @@ export default function ContactForm() {
           disabled={loading}
           value={formData.subject}
           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-          placeholder="Opportunity / Technical Collaboration"
-          className="w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border border-white/[0.08] text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-colors"
+          placeholder="Project Inquiry / Full-Stack Role"
+          className="w-full px-4 py-3 rounded-xl bg-charcoal-900 border border-white/[0.08] text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-forest-500 focus:ring-1 focus:ring-forest-500/30 transition-colors"
         />
       </div>
 
       {/* Message Field */}
       <div>
-        <label htmlFor="contact-message" className="block text-[11px] font-mono tracking-widest uppercase text-slate-300 mb-1.5 font-medium">
-          Message <span className="text-emerald-400">*</span>
+        <label htmlFor="contact-message" className="block text-xs font-medium text-slate-300 mb-1.5">
+          Message <span className="text-forest-400">*</span>
         </label>
         <textarea
           id="contact-message"
           required
-          rows={4}
+          rows={5}
           disabled={loading}
           value={formData.message}
           onChange={(e) => {
@@ -208,10 +208,10 @@ export default function ContactForm() {
             if (fieldErrors.message) setFieldErrors({ ...fieldErrors, message: "" });
           }}
           placeholder="Hi Kaviyarasu, I would like to discuss an opportunity or project..."
-          className={`w-full px-4 py-2.5 rounded-xl bg-obsidian-950/90 border text-sm text-white placeholder:text-slate-600 focus:outline-none transition-colors resize-none ${
+          className={`w-full px-4 py-3 rounded-xl bg-charcoal-900 border text-sm text-white placeholder:text-slate-500 focus:outline-none transition-colors resize-none ${
             fieldErrors.message
               ? "border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
-              : "border-white/[0.08] focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30"
+              : "border-white/[0.08] focus:border-forest-500 focus:ring-1 focus:ring-forest-500/30"
           }`}
         />
         {fieldErrors.message && (
@@ -224,15 +224,15 @@ export default function ContactForm() {
 
       {/* Status Feedback Banner */}
       {status.type === "success" && (
-        <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs flex items-start gap-2 animate-fade-in" role="status">
-          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-400" />
+        <div className="p-4 rounded-xl bg-forest-950/40 border border-forest-500/40 text-forest-300 text-sm flex items-start gap-2.5 animate-fade-in" role="status">
+          <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-forest-400" />
           <span>{status.message}</span>
         </div>
       )}
 
       {status.type === "error" && (
-        <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-300 text-xs flex items-start gap-2 animate-fade-in" role="alert">
-          <AlertCircle size={16} className="mt-0.5 shrink-0 text-rose-400" />
+        <div className="p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-300 text-sm flex items-start gap-2.5 animate-fade-in" role="alert">
+          <AlertCircle size={18} className="mt-0.5 shrink-0 text-rose-400" />
           <span>{status.message}</span>
         </div>
       )}
@@ -241,17 +241,17 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition-all shadow-emerald-glow disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+        className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-forest-600 hover:bg-forest-500 text-white font-medium text-sm transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-400"
       >
         {loading ? (
           <>
-            <Loader2 size={15} className="animate-spin" />
-            <span>Dispatching Message...</span>
+            <Loader2 size={16} className="animate-spin" />
+            <span>Sending Message...</span>
           </>
         ) : (
           <>
-            <Send size={15} />
-            <span>Send Direct Message</span>
+            <Send size={16} />
+            <span>Send Message</span>
           </>
         )}
       </button>

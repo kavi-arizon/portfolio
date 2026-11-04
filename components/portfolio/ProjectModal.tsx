@@ -52,7 +52,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-ink/60 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/60 dark:bg-black/80 backdrop-blur-md animate-fade-in"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-project-title"
@@ -62,16 +62,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-3xl max-h-[92vh] flex flex-col rounded-2xl bg-white border border-surface-border shadow-2xl overflow-hidden my-auto"
+        className="relative w-full max-w-3xl max-h-[92vh] flex flex-col rounded-2xl bg-surface border border-rule shadow-2xl overflow-hidden my-auto"
       >
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-canvas border-b border-surface-border shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 bg-background border-b border-rule shrink-0">
           <div className="flex items-center gap-2.5">
             <span className="px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 text-xs font-semibold text-accent">
               {project.categoryLabel}
             </span>
             {project.completionDate && (
-              <span className="text-xs text-ink-secondary flex items-center gap-1 font-medium">
+              <span className="text-xs text-content-secondary flex items-center gap-1 font-medium">
                 <Calendar size={13} />
                 {project.completionDate}
               </span>
@@ -82,7 +82,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-white hover:bg-surface-muted/60 text-ink-secondary hover:text-ink transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
+            className="p-1.5 rounded-lg bg-surface hover:bg-surface-muted text-content-secondary hover:text-content-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
             aria-label="Close project case study"
           >
             <X size={18} />
@@ -95,7 +95,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div>
             <h3
               id="modal-project-title"
-              className="text-2xl sm:text-3xl font-bold text-ink tracking-tight"
+              className="text-2xl sm:text-3xl font-bold text-content-primary tracking-tight"
             >
               {project.title}
             </h3>
@@ -111,7 +111,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-xs sm:text-sm transition-colors shadow-accent-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <ExternalLink size={14} />
                 <span>Open Live Application</span>
@@ -122,7 +122,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-canvas hover:bg-surface-muted/60 border border-surface-border text-ink hover:text-accent font-medium text-xs sm:text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-background hover:bg-surface-muted border border-rule text-content-primary hover:text-accent font-medium text-xs sm:text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent shadow-soft-sm"
               >
                 <Github size={14} />
                 <span>View Source Code</span>
@@ -133,7 +133,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={project.v1GithubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-canvas hover:bg-surface-muted/60 border border-surface-border text-ink-secondary hover:text-ink text-xs font-mono transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-background hover:bg-surface-muted border border-rule text-content-secondary hover:text-content-primary text-xs font-mono transition-colors"
               >
                 <Github size={13} />
                 <span>{project.v1Title || "View v1 Archive"}</span>
@@ -142,12 +142,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
 
           {/* Overview */}
-          <div className="p-5 rounded-xl bg-canvas/80 border border-surface-border space-y-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-ink-secondary flex items-center gap-1.5">
+          <div className="p-5 rounded-xl bg-background border border-rule space-y-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-content-secondary flex items-center gap-1.5">
               <BookOpen size={14} className="text-accent" />
               Project Overview
             </h4>
-            <p className="text-sm text-ink-secondary leading-relaxed font-normal">
+            <p className="text-sm text-content-secondary leading-relaxed font-normal">
               {project.longDescription || project.description}
             </p>
           </div>
@@ -156,12 +156,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {(project.problem || project.solution) && (
             <div className="grid md:grid-cols-2 gap-4">
               {project.problem && (
-                <div className="p-5 rounded-xl bg-canvas/80 border border-surface-border space-y-1.5">
+                <div className="p-5 rounded-xl bg-background border border-rule space-y-1.5">
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-rose-500 flex items-center gap-1.5">
                     <AlertTriangle size={14} />
                     The Problem
                   </h4>
-                  <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-content-secondary leading-relaxed font-normal">
                     {project.problem}
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     <Lightbulb size={14} />
                     The Solution
                   </h4>
-                  <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-content-secondary leading-relaxed font-normal">
                     {project.solution}
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Key Features */}
           {project.features && project.features.length > 0 && (
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-ink-secondary flex items-center gap-1.5">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-content-secondary flex items-center gap-1.5">
                 <Sparkles size={14} className="text-accent" />
                 Key Features &amp; Implementation Details
               </h4>
@@ -192,7 +192,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {project.features.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2.5 p-3 rounded-lg bg-canvas border border-surface-border text-xs sm:text-sm text-ink-secondary"
+                    className="flex items-start gap-2.5 p-3 rounded-lg bg-background border border-rule-subtle text-xs sm:text-sm text-content-secondary"
                   >
                     <CheckCircle2 size={15} className="text-accent mt-0.5 shrink-0" />
                     <span className="font-normal">{feature}</span>
@@ -204,7 +204,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Technologies Used */}
           <div className="space-y-2.5">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-ink-secondary flex items-center gap-1.5">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-content-secondary flex items-center gap-1.5">
               <Layers size={14} className="text-accent" />
               Engineering Stack
             </h4>
@@ -212,7 +212,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2.5 py-1 rounded-md bg-canvas border border-surface-border text-xs font-medium text-ink"
+                  className="px-2.5 py-1 rounded-md bg-background border border-rule text-xs font-medium text-content-primary"
                 >
                   {tech}
                 </span>

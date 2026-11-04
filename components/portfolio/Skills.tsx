@@ -24,28 +24,28 @@ export default function Skills() {
       : SKILL_CATEGORIES.filter((cat) => cat.id === selectedCategory);
 
   return (
-    <section id="skills" className="py-16 md:py-24 relative bg-white/60 border-y border-surface-border w-full" aria-labelledby="skills-heading">
+    <section id="skills" className="py-16 md:py-24 relative bg-surface-muted/30 border-y border-rule w-full" aria-labelledby="skills-heading">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-surface-border gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-rule gap-6">
           <div>
             <span className="text-xs font-semibold tracking-wider uppercase text-accent mb-2 block">
               Capabilities
             </span>
             <h2
               id="skills-heading"
-              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
+              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-content-primary tracking-tight"
             >
               Technical Stack &amp; Tooling
             </h2>
-            <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-3xl font-normal">
+            <p className="text-sm sm:text-base text-content-secondary mt-2 max-w-3xl font-normal">
               Frameworks, languages, and modern tools applied daily across production storefronts and full-stack software.
             </p>
           </div>
 
           {/* Filter Tabs */}
           <div
-            className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-white border border-surface-border shadow-soft-sm self-start md:self-auto"
+            className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-surface border border-rule shadow-soft-sm self-start md:self-auto"
             role="tablist"
             aria-label="Filter skills by technical domain"
           >
@@ -62,7 +62,7 @@ export default function Skills() {
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     isSelected
                       ? "bg-accent text-white shadow-sm font-semibold"
-                      : "text-ink-secondary hover:text-ink hover:bg-surface-muted/50"
+                      : "text-content-secondary hover:text-content-primary hover:bg-surface-muted/60"
                   }`}
                 >
                   <Icon size={13} />
@@ -82,17 +82,17 @@ export default function Skills() {
                   <span className="font-mono text-xs text-accent font-bold">
                     0{idx + 1}.
                   </span>
-                  <h3 className="text-lg sm:text-xl font-bold text-ink tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-content-primary tracking-tight">
                     {category.title}
                   </h3>
                 </div>
-                <span className="text-xs text-ink-muted">
+                <span className="text-xs text-content-muted">
                   {category.skills.length} {category.skills.length === 1 ? "skill" : "skills"}
                 </span>
               </div>
 
               {category.description && (
-                <p className="text-sm text-ink-secondary max-w-3xl font-normal">
+                <p className="text-sm text-content-secondary max-w-3xl font-normal">
                   {category.description}
                 </p>
               )}
@@ -101,11 +101,11 @@ export default function Skills() {
                 {category.skills.map((skill: SkillItem) => (
                   <div
                     key={skill.name}
-                    className="group p-4 sm:p-5 rounded-xl bg-white border border-surface-border hover:border-accent/40 hover:shadow-soft-md transition-all duration-200 relative flex flex-col justify-between"
+                    className="group p-4 sm:p-5 rounded-xl bg-surface border border-rule hover:border-accent/40 hover:shadow-soft-md transition-all duration-200 relative flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-1.5">
-                        <h4 className="font-semibold text-sm sm:text-base text-ink group-hover:text-accent transition-colors">
+                        <h4 className="font-semibold text-sm sm:text-base text-content-primary group-hover:text-accent transition-colors">
                           {skill.name}
                         </h4>
                         {skill.highlight && (
@@ -117,7 +117,7 @@ export default function Skills() {
                         )}
                       </div>
                       {skill.description && (
-                        <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed font-normal">
+                        <p className="text-xs sm:text-sm text-content-secondary leading-relaxed font-normal">
                           {skill.description}
                         </p>
                       )}

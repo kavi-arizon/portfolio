@@ -14,7 +14,7 @@ import Footer from "@/components/portfolio/Footer";
 
 export default function PortfolioPage() {
   return (
-    <div className="relative min-h-screen bg-canvas text-ink selection:bg-accent/15 selection:text-accent">
+    <div className="relative min-h-screen bg-background text-content-primary selection:bg-accent/20 selection:text-accent">
       {/* Accessible skip link for keyboard users */}
       <a
         href="#main-content"

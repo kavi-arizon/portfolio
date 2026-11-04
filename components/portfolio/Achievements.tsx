@@ -6,15 +6,15 @@ export default function Achievements() {
   if (!ACHIEVEMENTS || ACHIEVEMENTS.length === 0) return null;
 
   return (
-    <section id="achievements" className="py-16 md:py-24 relative bg-canvas border-t border-surface-border w-full" aria-labelledby="achievements-heading">
+    <section id="achievements" className="py-16 md:py-24 relative bg-background border-t border-rule w-full" aria-labelledby="achievements-heading">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
-        <div className="mb-10 pb-6 border-b border-surface-border">
+        <div className="mb-10 pb-6 border-b border-rule">
           <span className="text-xs font-semibold tracking-wider uppercase text-accent mb-2 block">
             Recognition
           </span>
           <h2
             id="achievements-heading"
-            className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
+            className="text-3xl sm:text-4xl xl:text-5xl font-bold text-content-primary tracking-tight"
           >
             Awards &amp; Professional Milestones
           </h2>
@@ -24,7 +24,7 @@ export default function Achievements() {
           {ACHIEVEMENTS.map((item) => (
             <div
               key={item.id}
-              className="p-6 sm:p-8 rounded-2xl bg-white border border-surface-border hover:border-accent/40 shadow-soft-sm hover:shadow-soft-md flex flex-col justify-between transition-all"
+              className="p-6 sm:p-8 rounded-2xl bg-surface border border-rule hover:border-accent/40 shadow-soft-sm hover:shadow-soft-md flex flex-col justify-between transition-all"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
@@ -33,25 +33,25 @@ export default function Achievements() {
                     {item.date}
                   </span>
                   {item.issuer && (
-                    <span className="text-xs uppercase tracking-wider text-ink-secondary font-semibold">
+                    <span className="text-xs uppercase tracking-wider text-content-secondary font-semibold">
                       {item.issuer}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-ink mb-2 tracking-tight">
+                <h3 className="text-lg sm:text-xl font-bold text-content-primary mb-2 tracking-tight">
                   {item.title}
                 </h3>
 
                 {item.description && (
-                  <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-normal">
+                  <p className="text-sm sm:text-base text-content-secondary leading-relaxed font-normal">
                     {item.description}
                   </p>
                 )}
               </div>
 
               {item.credentialUrl && (
-                <div className="pt-4 mt-4 border-t border-surface-muted flex justify-end">
+                <div className="pt-4 mt-4 border-t border-rule flex justify-end">
                   <a
                     href={item.credentialUrl}
                     target="_blank"

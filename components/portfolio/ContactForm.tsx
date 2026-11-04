@@ -99,7 +99,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-6 sm:p-8 rounded-2xl bg-white border border-surface-border shadow-soft-md space-y-5"
+      className="p-6 sm:p-8 rounded-2xl bg-surface border border-rule shadow-soft-md space-y-5"
       noValidate
       aria-label="Contact inquiry form"
     >
@@ -118,7 +118,7 @@ export default function ContactForm() {
 
       {/* Name Field */}
       <div>
-        <label htmlFor="contact-name" className="block text-xs font-semibold text-ink mb-1.5">
+        <label htmlFor="contact-name" className="block text-xs font-semibold text-content-primary mb-1.5">
           Your Name <span className="text-accent">*</span>
         </label>
         <input
@@ -132,10 +132,10 @@ export default function ContactForm() {
             if (fieldErrors.name) setFieldErrors({ ...fieldErrors, name: "" });
           }}
           placeholder="e.g. Alex Johnson"
-          className={`w-full px-4 py-3 rounded-xl bg-canvas border text-sm text-ink placeholder:text-ink-muted focus:outline-none transition-colors ${
+          className={`w-full px-4 py-3 rounded-xl bg-background border text-sm text-content-primary placeholder:text-content-muted focus:outline-none transition-colors ${
             fieldErrors.name
               ? "border-rose-500 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
-              : "border-surface-border focus:border-accent focus:ring-1 focus:ring-accent/30"
+              : "border-rule focus:border-accent focus:ring-1 focus:ring-accent/30"
           }`}
         />
         {fieldErrors.name && (
@@ -148,7 +148,7 @@ export default function ContactForm() {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="contact-email" className="block text-xs font-semibold text-ink mb-1.5">
+        <label htmlFor="contact-email" className="block text-xs font-semibold text-content-primary mb-1.5">
           Your Email Address <span className="text-accent">*</span>
         </label>
         <input
@@ -162,10 +162,10 @@ export default function ContactForm() {
             if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: "" });
           }}
           placeholder="alex@example.com"
-          className={`w-full px-4 py-3 rounded-xl bg-canvas border text-sm text-ink placeholder:text-ink-muted focus:outline-none transition-colors ${
+          className={`w-full px-4 py-3 rounded-xl bg-background border text-sm text-content-primary placeholder:text-content-muted focus:outline-none transition-colors ${
             fieldErrors.email
               ? "border-rose-500 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
-              : "border-surface-border focus:border-accent focus:ring-1 focus:ring-accent/30"
+              : "border-rule focus:border-accent focus:ring-1 focus:ring-accent/30"
           }`}
         />
         {fieldErrors.email && (
@@ -178,8 +178,8 @@ export default function ContactForm() {
 
       {/* Subject Field */}
       <div>
-        <label htmlFor="contact-subject" className="block text-xs font-semibold text-ink mb-1.5">
-          Subject <span className="text-ink-secondary text-xs font-normal">(optional)</span>
+        <label htmlFor="contact-subject" className="block text-xs font-semibold text-content-primary mb-1.5">
+          Subject <span className="text-content-secondary text-xs font-normal">(optional)</span>
         </label>
         <input
           type="text"
@@ -188,13 +188,13 @@ export default function ContactForm() {
           value={formData.subject}
           onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
           placeholder="Project Inquiry / Full-Stack Role"
-          className="w-full px-4 py-3 rounded-xl bg-canvas border border-surface-border text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors"
+          className="w-full px-4 py-3 rounded-xl bg-background border border-rule text-sm text-content-primary placeholder:text-content-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 transition-colors"
         />
       </div>
 
       {/* Message Field */}
       <div>
-        <label htmlFor="contact-message" className="block text-xs font-semibold text-ink mb-1.5">
+        <label htmlFor="contact-message" className="block text-xs font-semibold text-content-primary mb-1.5">
           Message <span className="text-accent">*</span>
         </label>
         <textarea
@@ -208,10 +208,10 @@ export default function ContactForm() {
             if (fieldErrors.message) setFieldErrors({ ...fieldErrors, message: "" });
           }}
           placeholder="Hi Kaviyarasu, I would like to discuss an opportunity or project..."
-          className={`w-full px-4 py-3 rounded-xl bg-canvas border text-sm text-ink placeholder:text-ink-muted focus:outline-none transition-colors resize-none ${
+          className={`w-full px-4 py-3 rounded-xl bg-background border text-sm text-content-primary placeholder:text-content-muted focus:outline-none transition-colors resize-none ${
             fieldErrors.message
               ? "border-rose-500 focus:border-rose-500 focus:ring-1 focus:ring-rose-500/30"
-              : "border-surface-border focus:border-accent focus:ring-1 focus:ring-accent/30"
+              : "border-rule focus:border-accent focus:ring-1 focus:ring-accent/30"
           }`}
         />
         {fieldErrors.message && (
@@ -231,8 +231,8 @@ export default function ContactForm() {
       )}
 
       {status.type === "error" && (
-        <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-sm flex items-start gap-2.5 animate-fade-in" role="alert">
-          <AlertCircle size={18} className="mt-0.5 shrink-0 text-rose-600" />
+        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/25 text-rose-500 text-sm flex items-start gap-2.5 animate-fade-in" role="alert">
+          <AlertCircle size={18} className="mt-0.5 shrink-0 text-rose-500" />
           <span className="font-medium">{status.message}</span>
         </div>
       )}
@@ -241,7 +241,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-sm transition-all shadow-accent-sm hover:shadow-accent-hover disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-sm transition-all shadow-sm hover:shadow-accent-hover disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {loading ? (
           <>

@@ -1,9 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { PROFILE } from "@/data/profile";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 export const viewport: Viewport = {
-  themeColor: "#090d16",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0B0F14" },
+    { media: "(prefers-color-scheme: light)", color: "#F5F5F0" },
+  ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -77,15 +81,38 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Anti-flash inline theme initializer */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.setAttribute('data-theme', 'light');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                  }
+                } catch (e) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#090d16] text-slate-100 antialiased font-sans min-h-screen flex flex-col">
-        {children}
+      <body className="bg-background text-content-primary antialiased font-sans min-h-screen flex flex-col transition-colors duration-200">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

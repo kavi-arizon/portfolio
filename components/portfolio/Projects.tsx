@@ -28,25 +28,25 @@ export default function Projects() {
     <section id="projects" className="py-16 md:py-24 relative overflow-hidden w-full" aria-labelledby="projects-heading">
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-surface-border gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-rule gap-6">
           <div>
             <span className="text-xs font-semibold tracking-wider uppercase text-accent mb-2 block">
               Portfolio
             </span>
             <h2
               id="projects-heading"
-              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-ink tracking-tight"
+              className="text-3xl sm:text-4xl xl:text-5xl font-bold text-content-primary tracking-tight"
             >
               Selected Applications &amp; Case Studies
             </h2>
-            <p className="text-sm sm:text-base text-ink-secondary mt-2 max-w-3xl font-normal">
+            <p className="text-sm sm:text-base text-content-secondary mt-2 max-w-3xl font-normal">
               Production web applications engineered with modular component systems, reactive calculation engines, and real-time APIs.
             </p>
           </div>
 
           {/* Project Filter Pills */}
           <div
-            className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-white border border-surface-border shadow-soft-sm self-start md:self-auto"
+            className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-surface border border-rule shadow-soft-sm self-start md:self-auto"
             role="tablist"
             aria-label="Filter applications by category"
           >
@@ -62,7 +62,7 @@ export default function Projects() {
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     isSelected
                       ? "bg-accent text-white shadow-sm font-semibold"
-                      : "text-ink-secondary hover:text-ink hover:bg-surface-muted/50"
+                      : "text-content-secondary hover:text-content-primary hover:bg-surface-muted/60"
                   }`}
                 >
                   {tab.label}
@@ -86,8 +86,8 @@ export default function Projects() {
             ))}
           </div>
         ) : (
-          <div className="p-12 text-center rounded-2xl bg-white border border-surface-border shadow-soft-sm w-full">
-            <p className="text-sm text-ink-secondary">No projects found matching this filter.</p>
+          <div className="p-12 text-center rounded-2xl bg-surface border border-rule shadow-soft-sm w-full">
+            <p className="text-sm text-content-secondary">No projects found matching this filter.</p>
           </div>
         )}
 
